@@ -4,7 +4,7 @@ A personalized AI wellness-planning tool that creates and adapts weekly workout 
 
 ## Project Status
 
-Sprint 0: final review of the repository, planning, project board, and documentation foundation.
+Sprint 0 is complete. The repository, planning documents, project board, and initial workflow are ready for Sprint 1.
 
 No application features or evaluation results are complete yet.
 

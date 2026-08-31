@@ -24,7 +24,7 @@
 
 ### Sprint 0 Review
 
-**Review status:** Acceptance criteria verified. Final documentation update is pending commit and push.
+**Review status:** Complete. Acceptance criteria were verified and the final documentation updates were committed and pushed.
 
 **Completed work:**
 
