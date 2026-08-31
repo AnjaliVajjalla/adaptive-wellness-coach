@@ -1,6 +1,6 @@
 # Project Tracker
 
-Last updated: Sprint 0
+Last updated: August 31, 2026, Sprint 0 review
 
 ## Completed
 
@@ -10,6 +10,11 @@ Last updated: Sprint 0
 - Created the private GitHub repository
 - Initialized local Git on the `main` branch
 - Connected the local repository to the GitHub remote
+- Created and pushed the initial documentation commit
+- Created the GitHub Project with Sprint Board, Backlog, and Roadmap views
+- Added Sprint, Priority, and Category project fields
+- Configured new project items to begin in Backlog
+- Created GitHub Issue #1 for the Sprint 0 foundation review
 
 ## Currently Learning
 
@@ -17,14 +22,17 @@ Last updated: Sprint 0
 - Professional sprint organization
 - Markdown documentation
 
-## Currently Building
+## Currently Reviewing
 
-- Sprint 0 repository foundation
+- Sprint 0 documentation and project-board foundation
 
 ## Tested
 
 - Local Git initialization
 - GitHub remote configuration
+- Initial commit visibility on GitHub
+- Automatic addition of repository issues to the project board
+- Default Backlog status for newly added project items
 
 ## Blocked
 
@@ -32,11 +40,10 @@ Last updated: Sprint 0
 
 ## Planned
 
-- Review and commit the initial documentation
-- Push the initial commit to GitHub
-- Create the GitHub Project board
-- Create the Sprint 0 backlog as GitHub Issues
-- Begin Sprint 1 only after Sprint 0 acceptance criteria pass
+- Review the Sprint 0 tracker and retrospective updates
+- Commit and push the final Sprint 0 documentation updates
+- Close GitHub Issue #1 after its acceptance criteria pass
+- Begin Sprint 1 with the fictional user-profile specification
 
 ## Explicitly Out of Scope
 

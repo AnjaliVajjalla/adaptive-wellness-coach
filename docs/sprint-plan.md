@@ -22,6 +22,40 @@
 - Project board and initial issues exist
 - Initial commit is visible on GitHub
 
+### Sprint 0 Review
+
+**Review status:** Acceptance criteria verified. Final documentation update is pending commit and push.
+
+**Completed work:**
+
+- Initialized the local repository on `main` and connected `origin`
+- Created and pushed the initial documentation commit
+- Created the core product, safety, planning, tracking, decision, and evaluation documents
+- Created Sprint Board, Backlog, and Roadmap project views
+- Added Sprint, Priority, and Category fields
+- Configured new project items to begin in Backlog
+- Created GitHub Issue #1 to review and close Sprint 0
+
+### Sprint 0 Retrospective
+
+**What went well:**
+
+- Defined the product scope and safety boundaries before writing application code
+- Connected documentation, Git history, GitHub Issues, and the project board
+- Used acceptance criteria to make completion measurable
+
+**What can improve:**
+
+- Update the project tracker immediately after completing setup tasks
+- Create issues before beginning work so the board reflects the full workflow
+- Keep new issues in Backlog until they are selected and ready to start
+
+**Actions for Sprint 1:**
+
+- Update the tracker at the end of each work session
+- Move an issue only when its real work status changes
+- Review and test each small feature before marking it Done
+
 ## Sprint 1: Fictional User Profile and Validation
 
 **Goal:** Build and test a structured fictional user profile with required-field validation.

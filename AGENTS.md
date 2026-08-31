@@ -41,6 +41,16 @@ This repository is dedicated only to designing, learning, building, testing, and
 - Update the project tracker at the end of each work session.
 - Keep unverified metrics, unfinished features, and unsupported claims out of the README.
 
+## Routine Task Procedure
+
+- Handle repetitive, low-risk project maintenance for Anjali when it can be completed directly.
+- Ask only for input that would materially affect the result.
+- Briefly state the proposed scope and obtain approval before making material updates.
+- After approval, complete the approved documentation, formatting, file setup, tracker synchronization, and similar mechanical work without asking for approval for every small substep.
+- Verify the completed work and clearly report what changed and what still requires Anjali's review.
+- Do not automatically commit, push, close issues, publish, delete, or make other external or difficult-to-reverse changes unless that action was explicitly included in the approved scope.
+- Continue using the guided teaching sequence for unfamiliar application code and technical concepts. Routine-task automation does not replace Anjali's hands-on learning.
+
 ## Current Sprint Sequence
 
 1. Sprint 0: Repository, project board, backlog, and core documentation
