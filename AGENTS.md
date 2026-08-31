@@ -4,7 +4,7 @@ This repository is dedicated only to designing, learning, building, testing, and
 
 ## Product Scope
 
-- Serve generally healthy adults age 18 or older who are beginners or returning to exercise.
+- Serve generally healthy people who are beginners or returning to exercise.
 - Start with structured weekly workout planning only.
 - Personalize plans using goals, experience, schedule, equipment, and preferences.
 - Add feedback-based plan adjustment only after the basic workflow is tested.
@@ -15,7 +15,7 @@ This repository is dedicated only to designing, learning, building, testing, and
 - This is a general wellness project, not a medical product.
 - Do not diagnose, treat, or manage medical conditions.
 - Do not create injury-rehabilitation plans.
-- Do not provide plans for minors, pregnancy or postpartum situations, eating disorders, or complex health conditions.
+- Do not provide plans for pregnancy or postpartum situations, eating disorders, or complex health conditions.
 - Do not provide extreme weight-loss recommendations, therapeutic diets, supplement advice, or medication advice.
 - Escalate excluded or higher-risk situations to an appropriate qualified professional.
 - Keep calculations transparent and label estimates clearly.

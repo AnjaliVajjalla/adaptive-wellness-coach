@@ -2,7 +2,7 @@
 
 ## Intended Use
 
-The Adaptive Wellness Coach provides general workout-planning support for generally healthy adults age 18 or older. It is an educational portfolio project and not a medical product.
+The Adaptive Wellness Coach provides general workout-planning support for generally healthy users. It is an educational portfolio project and not a medical product.
 
 ## Allowed Scope
 
@@ -16,7 +16,6 @@ The Adaptive Wellness Coach provides general workout-planning support for genera
 
 The system must not create a personalized plan for:
 
-- Anyone under age 18
 - Pregnancy or postpartum situations
 - Current injuries or requests for rehabilitation
 - Eating disorders or disordered-eating concerns

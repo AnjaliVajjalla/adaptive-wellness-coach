@@ -1,6 +1,6 @@
 # Project Tracker
 
-Last updated: August 31, 2026, Sprint 0 complete
+Last updated: August 31, 2026, Sprint 1 profile definition
 
 ## Completed
 
@@ -17,16 +17,22 @@ Last updated: August 31, 2026, Sprint 0 complete
 - Created GitHub Issue #1 for the Sprint 0 foundation review
 - Completed the Sprint 0 review and retrospective
 - Committed and pushed the final Sprint 0 documentation updates
+- Completed and closed the Sprint 0 foundation-review issue
+- Created Sprint 1 Issues #2 through #4
+- Approved the Sprint 1 profile fields and allowed values
+- Approved the fictional user-profile specification
+- Completed the Sprint 1 fictional user-profile specification
 
 ## Currently Learning
 
 - Git and GitHub fundamentals
 - Professional sprint organization
 - Markdown documentation
+- Structured data fields and validation rules
 
 ## Current Status
 
-- Sprint 0 is complete and Sprint 1 is ready to begin
+- Sprint 1 is active and user-profile validation is next
 
 ## Tested
 
@@ -42,9 +48,8 @@ Last updated: August 31, 2026, Sprint 0 complete
 
 ## Planned
 
-- Move GitHub Issue #1 to Done and close it
-- Create the Sprint 1 backlog issues
-- Begin Sprint 1 with the fictional user-profile specification
+- Build required-field and allowed-value validation in Issue #3
+- Test complete, incomplete, and invalid fictional profiles in Issue #4
 
 ## Explicitly Out of Scope
 

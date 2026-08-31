@@ -6,7 +6,7 @@ The Adaptive Wellness Coach will demonstrate practical skills in AI tool use, pe
 
 ## Target User
 
-The first version is for generally healthy adults age 18 or older who are complete beginners or returning to exercise and need help building a realistic routine.
+The first version is for generally healthy people who are complete beginners or returning to exercise and need help building a realistic routine.
 
 ## User Problem
 
@@ -18,7 +18,6 @@ The first version will collect a structured user profile, validate required info
 
 ## Required Inputs
 
-- Confirmation that the user is at least 18
 - Experience level
 - Primary fitness goals
 - Current activity level
@@ -56,7 +55,7 @@ The first version succeeds when it can safely create and explain a realistic wee
 - Calorie estimates
 - Medical advice or symptom assessment
 - Injury rehabilitation
-- Plans for minors or pregnancy
+- Pregnancy or postpartum workout planning
 - Eating-disorder support
 - Chronic-condition management
 - Wearable-device integration

@@ -11,6 +11,8 @@ This file records major product, safety, and technical decisions. Git history re
 | D-005 | Use fictional or synthetic profiles during development. | This avoids collecting private health information and supports repeatable evaluation. | Approved |
 | D-006 | Use GitHub Issues and GitHub Projects for work tracking. | This keeps planning connected to repository changes and builds workplace-relevant workflow skills. | Approved |
 | D-007 | Plan later AI and feedback features only after the basic validated workflow works. | This limits complexity and allows later design to use evidence from early testing. | Approved |
+| D-008 | Do not collect age or use age as an eligibility field in the initial profile. | Keep the first-version intake focused on information directly used for workout personalization. | Approved |
+| D-009 | Use controlled-choice user fields and a system-generated identifier for fictional profiles. | This supports consistent validation and keeps test data separate from real identities. | Approved |
 
 ## How to Update This Log
 

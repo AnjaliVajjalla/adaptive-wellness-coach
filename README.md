@@ -4,13 +4,13 @@ A personalized AI wellness-planning tool that creates and adapts weekly workout 
 
 ## Project Status
 
-Sprint 0 is complete. The repository, planning documents, project board, and initial workflow are ready for Sprint 1.
+Sprint 1 is in progress: the fictional user-profile specification is complete, and validation is next.
 
 No application features or evaluation results are complete yet.
 
 ## Product Overview
 
-The Adaptive Wellness Coach is intended for generally healthy adults who are complete beginners or returning to exercise. It will create realistic weekly workout plans based on goals, experience, availability, equipment, and preferences.
+The Adaptive Wellness Coach is intended for generally healthy people who are complete beginners or returning to exercise. It will create realistic weekly workout plans based on goals, experience, availability, equipment, and preferences.
 
 The first version will focus on workout planning. Meal ideas, calorie estimates, wearable integrations, and a web interface are outside the initial scope.
 
@@ -48,6 +48,7 @@ See [Sprint Plan](docs/sprint-plan.md) for acceptance criteria.
 - [Project Tracker](docs/project-tracker.md)
 - [Decision Log](docs/decision-log.md)
 - [Evaluation Plan](docs/evaluation-plan.md)
+- [Fictional User Profile Specification](docs/user-profile-spec.md)
 
 ## Development Note
 
