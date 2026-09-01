@@ -114,7 +114,7 @@
 
 ### Sprint 2 Review
 
-**Review status:** Ready for final GitHub sync. All acceptance criteria were verified locally inside Docker.
+**Review status:** Complete. All acceptance criteria were verified inside Docker, pushed to GitHub, and tracked through closed Issues #5 through #8.
 
 **Completed work:**
 

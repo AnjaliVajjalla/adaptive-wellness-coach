@@ -4,7 +4,7 @@ A personalized AI wellness-planning tool that creates and adapts weekly workout 
 
 ## Project Status
 
-Sprint 1 is complete. Sprint 2 safety-screening behavior and automated tests are implemented and verified locally; the final GitHub sync is pending.
+Sprints 1 and 2 are complete. Fictional profile validation and deterministic safety screening are implemented, tested in Docker, documented, and pushed to GitHub.
 
 The current suite contains 62 passing scenarios: 36 profile-validation scenarios and 26 safety-screening scenarios. Workout-plan generation is not implemented yet.
 

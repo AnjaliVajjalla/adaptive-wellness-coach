@@ -1,6 +1,6 @@
 # Project Tracker
 
-Last updated: September 1, 2026, Sprint 2 local verification
+Last updated: September 1, 2026, Sprint 2 completion
 
 ## Completed
 
@@ -34,6 +34,8 @@ Last updated: September 1, 2026, Sprint 2 local verification
 - Added 26 automated safety-screening scenarios covering every exclusion, missing and invalid answers, malformed input, and rule priority
 - Verified all 62 project scenarios inside Docker with Python 3.12 and pytest 9.1.1
 - Used a read-only bind mount for a temporary controlled-failure investigation without changing the repository or image
+- Committed and pushed the Sprint 2 implementation, tests, and documentation
+- Completed and closed Sprint 2 Issues #5 through #8
 
 ## Currently Learning
 
@@ -48,7 +50,7 @@ Last updated: September 1, 2026, Sprint 2 local verification
 
 ## Current Status
 
-- Sprint 2 acceptance criteria are verified locally; final GitHub synchronization is pending
+- Sprint 2 is complete and Sprint 3 output design is next
 
 ## Tested
 
@@ -79,8 +81,8 @@ Last updated: September 1, 2026, Sprint 2 local verification
 
 ## Planned
 
-- Complete the final Sprint 2 documentation review and GitHub sync
-- Begin Sprint 3 workout-plan output design after Sprint 2 closes
+- Define and approve the Sprint 3 workout-plan output contract
+- Implement plan generation only after the output rules are documented
 
 ## Explicitly Out of Scope
 
