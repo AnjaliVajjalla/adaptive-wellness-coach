@@ -24,6 +24,8 @@ This repository is dedicated only to designing, learning, building, testing, and
 
 - Teach every unfamiliar technical concept before using it in project code.
 - Let Anjali make meaningful predictions, modifications, and explanations.
+- Treat general Python syntax as known unless Anjali asks for a refresher.
+- Focus Anjali's hands-on work on debugging, code review, testing assumptions, and explaining results rather than typing routine boilerplate.
 - Do not write the entire project at once.
 - Use reliable Python functions for calculations, validation, and safety rules.
 - Use an LLM only where language understanding or flexible reasoning adds value.

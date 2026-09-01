@@ -4,7 +4,7 @@ A personalized AI wellness-planning tool that creates and adapts weekly workout 
 
 ## Project Status
 
-Sprint 1 is in progress: the fictional user-profile specification is complete, and validation is next.
+Sprint 1 is in progress: user-profile validation is implemented, and automated testing is next.
 
 No application features or evaluation results are complete yet.
 

@@ -22,6 +22,8 @@ Last updated: August 31, 2026, Sprint 1 profile definition
 - Approved the Sprint 1 profile fields and allowed values
 - Approved the fictional user-profile specification
 - Completed the Sprint 1 fictional user-profile specification
+- Implemented required-field, allowed-value, and cross-field profile validation
+- Manually verified representative valid and invalid profiles
 
 ## Currently Learning
 
@@ -32,7 +34,7 @@ Last updated: August 31, 2026, Sprint 1 profile definition
 
 ## Current Status
 
-- Sprint 1 is active and user-profile validation is next
+- Sprint 1 is active and automated profile-validation testing is next
 
 ## Tested
 
@@ -41,6 +43,11 @@ Last updated: August 31, 2026, Sprint 1 profile definition
 - Initial commit visibility on GitHub
 - Automatic addition of repository issues to the project board
 - Default Backlog status for newly added project items
+- Complete fictional profile passes manual validation
+- Missing required field returns a clear error
+- Invalid allowed value returns a clear error
+- Conflicting preferences return a clear error
+- Incorrect multi-select data returns a clear error without crashing
 
 ## Blocked
 
@@ -48,7 +55,6 @@ Last updated: August 31, 2026, Sprint 1 profile definition
 
 ## Planned
 
-- Build required-field and allowed-value validation in Issue #3
 - Test complete, incomplete, and invalid fictional profiles in Issue #4
 
 ## Explicitly Out of Scope
