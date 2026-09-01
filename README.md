@@ -4,9 +4,9 @@ A personalized AI wellness-planning tool that creates and adapts weekly workout 
 
 ## Project Status
 
-Sprint 1 is in progress: user-profile validation is implemented, and automated testing is next.
+Sprint 1 is complete: the fictional user-profile specification, deterministic validation, and automated Docker-based tests are implemented.
 
-No application features or evaluation results are complete yet.
+The current validation suite contains 36 passing scenarios. Safety screening and workout-plan generation are not implemented yet.
 
 ## Product Overview
 
@@ -40,6 +40,17 @@ See [Safety Boundaries](docs/safety-boundaries.md) for the working safety specif
 
 See [Sprint Plan](docs/sprint-plan.md) for acceptance criteria.
 
+## Run the Validation Tests
+
+With Docker Desktop running:
+
+```bash
+docker build -t adaptive-wellness-coach:test .
+docker run --rm adaptive-wellness-coach:test
+```
+
+Latest verified result: 36 tests passed inside Linux with Python 3.12 and pytest 9.1.1.
+
 ## Documentation
 
 - [Product Brief](docs/product-brief.md)
@@ -52,4 +63,4 @@ See [Sprint Plan](docs/sprint-plan.md) for acceptance criteria.
 
 ## Development Note
 
-The repository is being built in small, tested checkpoints. Commands, setup instructions, architecture details, screenshots, and results will be added only after they exist and have been verified.
+The repository is being built in small, tested checkpoints. FastAPI, vector retrieval, Azure deployment, CI/CD, and monitoring are later phases and will be documented as implemented only after they are verified.

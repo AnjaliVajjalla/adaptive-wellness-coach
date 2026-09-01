@@ -68,6 +68,38 @@
 - Invalid values are rejected with understandable messages
 - Automated tests cover complete, incomplete, and invalid profiles
 
+### Sprint 1 Review
+
+**Review status:** Complete. All acceptance criteria were verified locally.
+
+**Completed work:**
+
+- Documented the fictional user-profile fields and allowed values
+- Implemented deterministic required-field, allowed-value, type, duplicate, and cross-field validation
+- Added 36 automated pytest scenarios for valid and invalid profile behavior
+- Built and ran the test suite inside a Docker image using Python 3.12 and pytest 9.1.1
+- Confirmed all 36 scenarios pass
+
+### Sprint 1 Retrospective
+
+**What went well:**
+
+- Defined the profile contract before implementing validation
+- Kept safety screening separate from general profile validation
+- Added automated coverage before beginning the next feature
+- Used Docker to make the test environment reproducible
+
+**What can improve:**
+
+- Review test coverage gaps before declaring a feature complete
+- Keep learning explanations focused on their project and interview purpose
+
+**Actions for Sprint 2:**
+
+- Define safety categories and expected outcomes before implementing rules
+- Test every documented exclusion category
+- Continue running the official test suite inside Docker
+
 ## Sprint 2: Safety Screening
 
 **Goal:** Create and test deterministic safety-screening rules.
@@ -94,4 +126,4 @@
 
 ## Later Planning
 
-AI tool use, natural-language explanations, feedback-based adaptation, broader evaluation, interface work, and public presentation will be planned only after Sprint 3 is tested.
+After Sprint 3, plan the FastAPI service, vector retrieval, Dockerized application runtime, Azure deployment, security hardening, CI/CD, monitoring, AI-assisted explanations, feedback-based adaptation, broader evaluation, and public presentation.

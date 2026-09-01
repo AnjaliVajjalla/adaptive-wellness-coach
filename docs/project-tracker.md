@@ -1,6 +1,6 @@
 # Project Tracker
 
-Last updated: August 31, 2026, Sprint 1 profile definition
+Last updated: September 1, 2026, Sprint 1 completion
 
 ## Completed
 
@@ -24,6 +24,10 @@ Last updated: August 31, 2026, Sprint 1 profile definition
 - Completed the Sprint 1 fictional user-profile specification
 - Implemented required-field, allowed-value, and cross-field profile validation
 - Manually verified representative valid and invalid profiles
+- Added automated pytest coverage for valid, missing, invalid, malformed, duplicate, and conflicting profile inputs
+- Added a Docker test image and excluded unnecessary local files from Docker builds
+- Verified all 36 profile-validation scenarios inside Docker with Python 3.12 and pytest 9.1.1
+- Reviewed a controlled pytest failure and distinguished an incorrect test expectation from an application defect
 
 ## Currently Learning
 
@@ -31,10 +35,12 @@ Last updated: August 31, 2026, Sprint 1 profile definition
 - Professional sprint organization
 - Markdown documentation
 - Structured data fields and validation rules
+- Pytest scenarios, assertions, fixtures, and parameterized testing
+- Docker images, containers, Dockerfiles, layers, caching, and containerized testing
 
 ## Current Status
 
-- Sprint 1 is active and automated profile-validation testing is next
+- Sprint 1 is complete and Sprint 2 safety-screening design is next
 
 ## Tested
 
@@ -48,6 +54,9 @@ Last updated: August 31, 2026, Sprint 1 profile definition
 - Invalid allowed value returns a clear error
 - Conflicting preferences return a clear error
 - Incorrect multi-select data returns a clear error without crashing
+- All 36 automated profile-validation scenarios pass inside Docker
+- A single named pytest scenario can be isolated and run inside Docker
+- The Docker test image rebuild reuses unchanged dependency and source layers
 
 ## Blocked
 
@@ -55,7 +64,8 @@ Last updated: August 31, 2026, Sprint 1 profile definition
 
 ## Planned
 
-- Test complete, incomplete, and invalid fictional profiles in Issue #4
+- Define safe, unsafe, and incomplete fictional profiles for Sprint 2
+- Implement deterministic safety screening before plan generation
 
 ## Explicitly Out of Scope
 
