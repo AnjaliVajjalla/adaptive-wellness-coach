@@ -1,6 +1,6 @@
 # Project Tracker
 
-Last updated: September 1, 2026, Sprint 2 completion
+Last updated: September 1, 2026, Sprint 3 design approval
 
 ## Completed
 
@@ -36,6 +36,8 @@ Last updated: September 1, 2026, Sprint 2 completion
 - Used a read-only bind mount for a temporary controlled-failure investigation without changing the repository or image
 - Committed and pushed the Sprint 2 implementation, tests, and documentation
 - Completed and closed Sprint 2 Issues #5 through #8
+- Defined and approved the Sprint 3 weekly workout-plan output contract
+- Created Sprint 3 Issues #9 through #13
 
 ## Currently Learning
 
@@ -50,7 +52,7 @@ Last updated: September 1, 2026, Sprint 2 completion
 
 ## Current Status
 
-- Sprint 2 is complete and Sprint 3 output design is next
+- Sprint 2 is complete; Sprint 3 output design is approved and exercise-library design is next
 
 ## Tested
 
@@ -81,8 +83,8 @@ Last updated: September 1, 2026, Sprint 2 completion
 
 ## Planned
 
-- Define and approve the Sprint 3 workout-plan output contract
-- Implement plan generation only after the output rules are documented
+- Build and review the small approved exercise library
+- Implement plan generation only after the exercise library is approved
 
 ## Explicitly Out of Scope
 

@@ -56,6 +56,7 @@ Latest verified result: 62 tests passed inside Linux with Python 3.12 and pytest
 - [Product Brief](docs/product-brief.md)
 - [Safety Boundaries](docs/safety-boundaries.md)
 - [Safety-Screening Specification](docs/safety-screening-spec.md)
+- [Weekly Workout-Plan Specification](docs/weekly-plan-spec.md)
 - [Sprint Plan](docs/sprint-plan.md)
 - [Project Tracker](docs/project-tracker.md)
 - [Decision Log](docs/decision-log.md)

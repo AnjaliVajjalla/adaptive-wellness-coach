@@ -148,6 +148,8 @@
 
 **Goal:** Generate a basic weekly workout plan from a safe, validated fictional profile.
 
+**Approved design:** See the [Weekly Workout-Plan Specification](weekly-plan-spec.md).
+
 **Acceptance criteria:**
 
 - Output structure is documented

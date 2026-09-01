@@ -15,6 +15,9 @@ This file records major product, safety, and technical decisions. Git history re
 | D-009 | Use controlled-choice user fields and a system-generated identifier for fictional profiles. | This supports consistent validation and keeps test data separate from real identities. | Approved |
 | D-010 | Use Docker as the official reproducible test environment. | This keeps the Python version, dependencies, code, and test command consistent across local development, CI/CD, and later deployment work. | Approved |
 | D-011 | Use seven required Boolean safety inputs with `safe`, `unsafe`, and `incomplete` outcomes; a known exclusion takes priority over missing answers. | This creates conservative, explainable, and independently testable behavior without collecting medical details. | Approved |
+| D-012 | Produce a moderately structured seven-day plan from a small approved exercise library, with activity-appropriate prescriptions, brief explanations, and calculated weekly totals. | This creates useful, explainable, and testable output without inventing exercises, exact weights, calorie estimates, or excessive detail. | Approved |
+| D-013 | Treat available days as scheduling options and limit complete beginners to three workout days and returning users to four, with recovery spacing when possible. | This prevents availability from automatically becoming an excessive workout schedule. | Approved |
+| D-014 | Preserve a challenging-intensity selection but require confirmation when the fictional user is a complete beginner or sedentary. | This respects user choice while adding a clear warning and keeping exercise selection appropriate to experience. | Approved |
 
 ## How to Update This Log
 
