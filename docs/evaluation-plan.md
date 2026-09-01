@@ -52,4 +52,4 @@ No evaluation percentage, performance result, or resume metric may be reported u
 
 ## Current Status
 
-Input-validation evaluation is implemented. All 36 automated validation scenarios passed inside the Docker test environment on September 1, 2026. Safety, plan-generation, and AI-output evaluation remain pending.
+Input-validation and deterministic safety-screening evaluation are implemented. On September 1, 2026, all 62 automated scenarios passed inside the Docker test environment: 36 profile-validation scenarios and 26 safety-screening scenarios. Plan-generation and AI-output evaluation remain pending.

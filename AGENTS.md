@@ -38,6 +38,7 @@ This repository is dedicated only to designing, learning, building, testing, and
 
 - Work in small sprints with a defined goal and acceptance criteria.
 - Track work through GitHub Issues and GitHub Projects.
+- Tell Anjali when a GitHub Project item should move and name its destination status; Anjali will make routine board changes in the browser.
 - Use meaningful Git commits after a coherent piece of work is reviewed.
 - Update the decision log when a major product, safety, or technical choice changes.
 - Update the project tracker at the end of each work session.

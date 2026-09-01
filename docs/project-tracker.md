@@ -1,6 +1,6 @@
 # Project Tracker
 
-Last updated: September 1, 2026, Sprint 1 completion
+Last updated: September 1, 2026, Sprint 2 local verification
 
 ## Completed
 
@@ -28,6 +28,12 @@ Last updated: September 1, 2026, Sprint 1 completion
 - Added a Docker test image and excluded unnecessary local files from Docker builds
 - Verified all 36 profile-validation scenarios inside Docker with Python 3.12 and pytest 9.1.1
 - Reviewed a controlled pytest failure and distinguished an incorrect test expectation from an application defect
+- Defined and approved seven Boolean safety-screening inputs
+- Defined safe, unsafe, and incomplete screening outcomes
+- Implemented deterministic safety screening separately from profile validation
+- Added 26 automated safety-screening scenarios covering every exclusion, missing and invalid answers, malformed input, and rule priority
+- Verified all 62 project scenarios inside Docker with Python 3.12 and pytest 9.1.1
+- Used a read-only bind mount for a temporary controlled-failure investigation without changing the repository or image
 
 ## Currently Learning
 
@@ -37,10 +43,12 @@ Last updated: September 1, 2026, Sprint 1 completion
 - Structured data fields and validation rules
 - Pytest scenarios, assertions, fixtures, and parameterized testing
 - Docker images, containers, Dockerfiles, layers, caching, and containerized testing
+- Docker command overrides, temporary containers, and bind mounts
+- Comparing pytest's actual and expected results during failure investigation
 
 ## Current Status
 
-- Sprint 1 is complete and Sprint 2 safety-screening design is next
+- Sprint 2 acceptance criteria are verified locally; final GitHub synchronization is pending
 
 ## Tested
 
@@ -57,6 +65,13 @@ Last updated: September 1, 2026, Sprint 1 completion
 - All 36 automated profile-validation scenarios pass inside Docker
 - A single named pytest scenario can be isolated and run inside Docker
 - The Docker test image rebuild reuses unchanged dependency and source layers
+- Safe answers return `safe` and allow the future workflow to continue
+- Every documented exclusion returns `unsafe` with refusal and escalation language
+- Missing, invalid, and malformed safety answers return `incomplete`
+- A known safety exclusion takes priority over a missing answer
+- All 62 automated project scenarios pass inside Docker
+- A selected test file can override the Dockerfile's default full-suite command
+- A temporary read-only bind mount can add a debugging test without modifying the image
 
 ## Blocked
 
@@ -64,8 +79,8 @@ Last updated: September 1, 2026, Sprint 1 completion
 
 ## Planned
 
-- Define safe, unsafe, and incomplete fictional profiles for Sprint 2
-- Implement deterministic safety screening before plan generation
+- Complete the final Sprint 2 documentation review and GitHub sync
+- Begin Sprint 3 workout-plan output design after Sprint 2 closes
 
 ## Explicitly Out of Scope
 

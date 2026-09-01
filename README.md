@@ -4,9 +4,9 @@ A personalized AI wellness-planning tool that creates and adapts weekly workout 
 
 ## Project Status
 
-Sprint 1 is complete: the fictional user-profile specification, deterministic validation, and automated Docker-based tests are implemented.
+Sprint 1 is complete. Sprint 2 safety-screening behavior and automated tests are implemented and verified locally; the final GitHub sync is pending.
 
-The current validation suite contains 36 passing scenarios. Safety screening and workout-plan generation are not implemented yet.
+The current suite contains 62 passing scenarios: 36 profile-validation scenarios and 26 safety-screening scenarios. Workout-plan generation is not implemented yet.
 
 ## Product Overview
 
@@ -29,7 +29,7 @@ The first version will focus on workout planning. Meal ideas, calorie estimates,
 
 This is a general wellness-planning project, not a medical product. It will not diagnose conditions, provide medical advice, create rehabilitation plans, or support excluded higher-risk situations.
 
-See [Safety Boundaries](docs/safety-boundaries.md) for the working safety specification.
+See [Safety Boundaries](docs/safety-boundaries.md) and the [Safety-Screening Specification](docs/safety-screening-spec.md) for the working safety rules.
 
 ## Current Roadmap
 
@@ -49,12 +49,13 @@ docker build -t adaptive-wellness-coach:test .
 docker run --rm adaptive-wellness-coach:test
 ```
 
-Latest verified result: 36 tests passed inside Linux with Python 3.12 and pytest 9.1.1.
+Latest verified result: 62 tests passed inside Linux with Python 3.12 and pytest 9.1.1.
 
 ## Documentation
 
 - [Product Brief](docs/product-brief.md)
 - [Safety Boundaries](docs/safety-boundaries.md)
+- [Safety-Screening Specification](docs/safety-screening-spec.md)
 - [Sprint Plan](docs/sprint-plan.md)
 - [Project Tracker](docs/project-tracker.md)
 - [Decision Log](docs/decision-log.md)

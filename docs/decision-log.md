@@ -14,6 +14,7 @@ This file records major product, safety, and technical decisions. Git history re
 | D-008 | Do not collect age or use age as an eligibility field in the initial profile. | Keep the first-version intake focused on information directly used for workout personalization. | Approved |
 | D-009 | Use controlled-choice user fields and a system-generated identifier for fictional profiles. | This supports consistent validation and keeps test data separate from real identities. | Approved |
 | D-010 | Use Docker as the official reproducible test environment. | This keeps the Python version, dependencies, code, and test command consistent across local development, CI/CD, and later deployment work. | Approved |
+| D-011 | Use seven required Boolean safety inputs with `safe`, `unsafe`, and `incomplete` outcomes; a known exclusion takes priority over missing answers. | This creates conservative, explainable, and independently testable behavior without collecting medical details. | Approved |
 
 ## How to Update This Log
 

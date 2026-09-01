@@ -112,6 +112,38 @@
 - Incomplete profiles request the missing information
 - Automated tests cover every documented exclusion category
 
+### Sprint 2 Review
+
+**Review status:** Ready for final GitHub sync. All acceptance criteria were verified locally inside Docker.
+
+**Completed work:**
+
+- Documented seven required Boolean safety inputs and three screening outcomes
+- Implemented deterministic safety screening separately from profile validation
+- Prioritized known exclusions over missing answers
+- Added 26 automated scenarios covering safe, unsafe, incomplete, invalid, malformed, multiple-exclusion, and rule-priority behavior
+- Confirmed all 62 project scenarios pass inside Docker using Python 3.12 and pytest 9.1.1
+- Ran focused tests and investigated a controlled failure using a temporary read-only bind mount
+
+### Sprint 2 Retrospective
+
+**What went well:**
+
+- Approved the safety contract before implementing the rules
+- Tested every documented exclusion with parameterized scenarios
+- Used Docker for full-suite, focused, and controlled-failure runs
+
+**What can improve:**
+
+- Continue distinguishing image creation from container execution
+- Read actual and expected pytest values before deciding whether code or a test is wrong
+
+**Actions for Sprint 3:**
+
+- Require both successful profile validation and a safe screening result before plan generation
+- Define the plan output contract before implementation
+- Continue using Docker as the official test environment
+
 ## Sprint 3: Basic Weekly Plan Foundation
 
 **Goal:** Generate a basic weekly workout plan from a safe, validated fictional profile.
