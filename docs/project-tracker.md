@@ -1,6 +1,6 @@
 # Project Tracker
 
-Last updated: September 1, 2026, Sprint 3 design approval
+Last updated: September 6, 2026, Sprint 3 exercise-library completion
 
 ## Completed
 
@@ -38,6 +38,9 @@ Last updated: September 1, 2026, Sprint 3 design approval
 - Completed and closed Sprint 2 Issues #5 through #8
 - Defined and approved the Sprint 3 weekly workout-plan output contract
 - Created Sprint 3 Issues #9 through #13
+- Built a reviewed library of 27 cardio, bodyweight, strength, and mobility activities
+- Added structured exercise metadata for equipment, experience, goals, preferences, prescriptions, and source traceability
+- Added 6 library-integrity tests and verified all 69 project tests in Docker
 
 ## Currently Learning
 
@@ -49,10 +52,11 @@ Last updated: September 1, 2026, Sprint 3 design approval
 - Docker images, containers, Dockerfiles, layers, caching, and containerized testing
 - Docker command overrides, temporary containers, and bind mounts
 - Comparing pytest's actual and expected results during failure investigation
+- Designing controlled, source-traceable data for deterministic selection
 
 ## Current Status
 
-- Sprint 2 is complete; Sprint 3 output design is approved and exercise-library design is next
+- Sprint 2 is complete; Sprint 3's exercise library is complete and weekly plan generation is next
 
 ## Tested
 
@@ -76,6 +80,9 @@ Last updated: September 1, 2026, Sprint 3 design approval
 - All 62 automated project scenarios pass inside Docker
 - A selected test file can override the Dockerfile's default full-suite command
 - A temporary read-only bind mount can add a debugging test without modifying the image
+- Exercise records use unique identifiers and complete, approved metadata
+- Every approved goal, activity preference, and equipment category is represented
+- All 69 automated project tests pass inside Docker
 
 ## Blocked
 
@@ -83,8 +90,8 @@ Last updated: September 1, 2026, Sprint 3 design approval
 
 ## Planned
 
-- Build and review the small approved exercise library
-- Implement plan generation only after the exercise library is approved
+- Implement weekly plan generation using the approved exercise library
+- Test scheduling, filtering, prescriptions, totals, and blocked outcomes
 
 ## Explicitly Out of Scope
 
