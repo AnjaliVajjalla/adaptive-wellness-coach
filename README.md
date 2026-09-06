@@ -6,7 +6,7 @@ A personalized AI wellness-planning tool that creates and adapts weekly workout 
 
 Sprints 1 and 2 are complete. Fictional profile validation and deterministic safety screening are implemented, tested in Docker, documented, and pushed to GitHub.
 
-The current suite contains 62 passing scenarios: 36 profile-validation scenarios and 26 safety-screening scenarios. Workout-plan generation is not implemented yet.
+The current suite contains 63 passing scenarios: 37 profile-validation scenarios and 26 safety-screening scenarios. Workout-plan generation is not implemented yet.
 
 ## Product Overview
 
@@ -49,7 +49,7 @@ docker build -t adaptive-wellness-coach:test .
 docker run --rm adaptive-wellness-coach:test
 ```
 
-Latest verified result: 62 tests passed inside Linux with Python 3.12 and pytest 9.1.1.
+Latest verified result: 63 tests passed inside Linux with Python 3.12 and pytest 9.1.1.
 
 ## Documentation
 

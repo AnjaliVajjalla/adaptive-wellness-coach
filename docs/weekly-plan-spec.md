@@ -110,6 +110,8 @@ on every selected day.
 - Disliked activities are never selected.
 - Neutral activities may be used when needed for a balanced plan.
 - Only equipment listed as available may be selected.
+- `Full gym access` is treated as access to every supported equipment category,
+  including a bicycle or stationary bike.
 - Intensity is interpreted relative to the fictional user's experience level.
 - Each workout day includes one brief explanation of why it was selected.
 

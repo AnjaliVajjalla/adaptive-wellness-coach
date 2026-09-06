@@ -36,6 +36,7 @@ EQUIPMENT_OPTIONS = {
     "Resistance bands",
     "Dumbbells",
     "Kettlebell",
+    "Bicycle or stationary bike",
     "Full gym access",
 }
 

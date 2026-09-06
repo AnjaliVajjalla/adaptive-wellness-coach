@@ -18,6 +18,7 @@ This file records major product, safety, and technical decisions. Git history re
 | D-012 | Produce a moderately structured seven-day plan from a small approved exercise library, with activity-appropriate prescriptions, brief explanations, and calculated weekly totals. | This creates useful, explainable, and testable output without inventing exercises, exact weights, calorie estimates, or excessive detail. | Approved |
 | D-013 | Treat available days as scheduling options and limit complete beginners to three workout days and returning users to four, with recovery spacing when possible. | This prevents availability from automatically becoming an excessive workout schedule. | Approved |
 | D-014 | Preserve a challenging-intensity selection but require confirmation when the fictional user is a complete beginner or sedentary. | This respects user choice while adding a clear warning and keeping exercise selection appropriate to experience. | Approved |
+| D-015 | Add `Bicycle or stationary bike` as an equipment option and treat `Full gym access` as access to every supported equipment category. | This lets the generator determine when a cycling preference can be fulfilled without requiring users to list common gym equipment separately. | Approved |
 
 ## How to Update This Log
 

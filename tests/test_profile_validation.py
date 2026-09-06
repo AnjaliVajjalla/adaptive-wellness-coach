@@ -49,6 +49,14 @@ def test_complete_returning_profile_passes(complete_profile):
     assert validate_profile(complete_profile) == []
 
 
+def test_bicycle_or_stationary_bike_is_supported(complete_profile):
+    complete_profile["available_equipment"] = [
+        "Bicycle or stationary bike"
+    ]
+
+    assert validate_profile(complete_profile) == []
+
+
 @pytest.mark.parametrize("missing_field", REQUIRED_FIELDS)
 def test_each_missing_required_field_is_reported(
     complete_profile,

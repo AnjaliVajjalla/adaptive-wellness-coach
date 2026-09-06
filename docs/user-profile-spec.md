@@ -66,6 +66,7 @@ This specification defines the fictional profile information used to build and t
 - Resistance bands
 - Dumbbells
 - Kettlebell
+- Bicycle or stationary bike
 - Full gym access
 
 ### Preferred and Disliked Activities
