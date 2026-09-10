@@ -146,6 +146,8 @@
 
 ## Sprint 3: Basic Weekly Plan Foundation
 
+**Status:** Complete
+
 **Goal:** Generate a basic weekly workout plan from a safe, validated fictional profile.
 
 **Approved design:** See the [Weekly Workout-Plan Specification](weekly-plan-spec.md).
@@ -157,6 +159,10 @@
 - Weekly totals are calculated with reliable Python functions
 - Plans are not generated for invalid or unsafe profiles
 - Automated tests cover representative safe profiles and constraint failures
+
+**Review:** The completed workflow combines validation, safety screening, recovery-aware scheduling, exercise filtering and ranking, structured prescriptions, explanations, and weekly totals. All 122 project tests pass in Docker.
+
+**Retrospective:** Small deterministic helpers made the planner explainable and easier to test. Future evaluation should expand the exercise library and identify where additional variety is useful.
 
 ## Later Planning
 

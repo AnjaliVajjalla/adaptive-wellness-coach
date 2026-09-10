@@ -1,6 +1,6 @@
 # Project Tracker
 
-Last updated: September 9, 2026, Sprint 3 generator implementation
+Last updated: September 9, 2026, Sprint 3 completion
 
 ## Completed
 
@@ -47,6 +47,7 @@ Last updated: September 9, 2026, Sprint 3 generator implementation
 - Added structured strength, cardio, and mobility prescriptions within the selected session duration
 - Integrated profile validation, safety screening, intensity confirmation, seven-day output, rest days, explanations, and weekly totals
 - Verified all 122 project tests inside Docker with Python 3.12 and pytest 9.1.1
+- Reviewed a complete fictional plan and completed the Sprint 3 review and retrospective
 
 ## Currently Learning
 
@@ -63,7 +64,7 @@ Last updated: September 9, 2026, Sprint 3 generator implementation
 
 ## Current Status
 
-- Sprint 2 is complete; Sprint 3 implementation and automated testing are complete, with final review and board synchronization remaining
+- Sprints 0 through 3 are complete; Sprint 4 planning is next
 
 ## Tested
 
@@ -101,7 +102,7 @@ Last updated: September 9, 2026, Sprint 3 generator implementation
 
 ## Planned
 
-- Review one generated fictional plan and complete the Sprint 3 status sync
+- Plan Sprint 4 Pydantic models, structured outputs, and FastAPI endpoints
 
 ## Explicitly Out of Scope
 

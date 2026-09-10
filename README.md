@@ -4,7 +4,7 @@ A personalized AI wellness-planning tool that creates and adapts weekly workout 
 
 ## Project Status
 
-Sprints 1 and 2 are complete. Sprint 3's reviewed exercise library and deterministic weekly-plan generator are implemented and tested; the sprint review remains.
+Sprints 1 through 3 are complete. The project now validates fictional profiles, applies safety screening, and generates deterministic seven-day workout plans from a reviewed exercise library.
 
 The current suite contains 122 passing scenarios covering profile validation, safety screening, exercise-library integrity, scheduling, personalization, prescriptions, and complete weekly-plan generation.
 
