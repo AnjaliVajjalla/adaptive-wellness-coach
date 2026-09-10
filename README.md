@@ -4,9 +4,9 @@ A personalized AI wellness-planning tool that creates and adapts weekly workout 
 
 ## Project Status
 
-Sprints 0 through 5 are complete. The project now validates fictional profiles, applies safety screening, generates deterministic seven-day workout plans, and provides guarded AI-assisted plan explanations and feedback interpretation through FastAPI.
+Sprints 0 through 6 are complete. The project validates fictional profiles, applies safety screening, generates deterministic seven-day workout plans, provides guarded AI-assisted features through FastAPI, and measures feedback interpretation with a local evaluation dataset and grader.
 
-The current suite contains 173 passing scenarios covering profile validation, safety screening, exercise-library integrity, scheduling, personalization, prescriptions, structured data contracts, AI failure handling, service integration, and API behavior.
+The current suite contains 179 passing scenarios covering profile validation, safety screening, exercise-library integrity, scheduling, personalization, prescriptions, structured data contracts, AI failure handling, evaluation, service integration, and API behavior.
 
 ## Product Overview
 
@@ -39,6 +39,7 @@ See [Safety Boundaries](docs/safety-boundaries.md) and the [Safety-Screening Spe
 - Sprint 3: Basic weekly workout-plan foundation and tests
 - Sprint 4: Pydantic data contracts, structured outputs, and FastAPI endpoints
 - Sprint 5: AI-assisted explanations and feedback interpretation
+- Sprint 6: Synthetic evaluation dataset, deterministic grading, and measured baseline
 
 See [Sprint Plan](docs/sprint-plan.md) for acceptance criteria.
 
@@ -59,7 +60,7 @@ Run the test suite with:
 docker run --rm adaptive-wellness-coach:api python -m pytest
 ```
 
-Latest verified result: 173 tests passed inside Linux with Python 3.12 and pytest 9.1.1.
+Latest verified result: 179 tests passed inside Linux with Python 3.12 and pytest 9.1.1.
 
 ## Documentation
 
@@ -73,8 +74,9 @@ Latest verified result: 173 tests passed inside Linux with Python 3.12 and pytes
 - [Project Tracker](docs/project-tracker.md)
 - [Decision Log](docs/decision-log.md)
 - [Evaluation Plan](docs/evaluation-plan.md)
+- [Feedback Evaluation Baseline](evals/results/feedback-baseline.md)
 - [Fictional User Profile Specification](docs/user-profile-spec.md)
 
 ## Development Note
 
-The repository is being built in small, tested checkpoints. Broader evaluation, observability, CI/CD, a web interface, and deployment will be documented as implemented only after they are verified.
+The repository is being built in small, tested checkpoints. Observability, CI/CD, a web interface, and deployment will be documented as implemented only after they are verified.

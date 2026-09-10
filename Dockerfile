@@ -7,6 +7,7 @@ RUN pip install --no-cache-dir -r requirements-dev.txt
 
 COPY src ./src
 COPY tests ./tests
+COPY evals ./evals
 COPY pytest.ini .
 
 EXPOSE 8000

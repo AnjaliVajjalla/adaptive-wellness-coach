@@ -22,6 +22,7 @@ This file records major product, safety, and technical decisions. Git history re
 | D-016 | Use goal-based session mixes, recovery-aware scheduling, preference rotation, movement-pattern balance, conservative prescriptions, beginner repetition, and returning-user exercise rotation. | These deterministic rules make plans personalized, explainable, and testable while keeping the first version appropriately limited. | Approved |
 | D-017 | Use strict Pydantic models at the API boundary, preserve the deterministic planner behind a service layer, and expose health and plan-generation endpoints with FastAPI. | This separates data validation, business logic, and HTTP delivery while producing documented, testable structured inputs and outputs. | Approved |
 | D-018 | Limit OpenAI to plan explanations and feedback extraction, then validate its structured output with Pydantic and deterministic business rules before use. | Language understanding adds value here, while planning, calculations, safety, and final authorization require predictable behavior and safe fallbacks. | Approved |
+| D-019 | Use a local JSONL evaluation dataset, deterministic grading, and saved result reports for AI-quality measurement. | This keeps evaluations reproducible, portable, reviewable, and independent of a retiring hosted evaluation platform. | Approved |
 
 ## How to Update This Log
 

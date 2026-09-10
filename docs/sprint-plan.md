@@ -202,6 +202,32 @@
 
 **Retrospective:** A response can satisfy its JSON schema while still violating a product rule. Combining structured outputs, Pydantic validation, deterministic business checks, and isolated test doubles provides stronger protection than any one layer alone.
 
+## Sprint 6: Evaluation Dataset and Measured Improvement
+
+**Status:** Complete
+
+**Goal:** Measure AI feedback interpretation with reproducible fictional cases
+and use failure analysis to improve the evaluation system.
+
+**Acceptance criteria:**
+
+- A synthetic evaluation dataset covers every feedback output field
+- Expected and actual structured outputs are compared deterministically
+- Whole-case and per-field accuracy are reported
+- Automated evaluation tests cannot make paid API calls
+- Live results, failures, corrections, and limitations are documented accurately
+
+**Review:** A 20-case fictional JSONL dataset, local runner, and deterministic
+grader now measure feedback interpretation. The harder live baseline scored
+95% whole-case accuracy. The only failure came from an ambiguous reference
+label, so the case wording was clarified instead of changing the AI prompt. A
+targeted live retest passed every field. All 179 project tests pass in Docker.
+
+**Retrospective:** Evaluation quality depends on the reference answers as well
+as the model. A failed comparison should be reviewed before changing a prompt,
+because an ambiguous label can make reasonable model behavior look incorrect.
+
 ## Later Planning
 
-After Sprint 5, build a dedicated evaluation dataset, then add observability, CI/CD, a simple web interface, deployment, and public presentation.
+After Sprint 6, add observability, CI/CD, a simple web interface, deployment,
+and public presentation.

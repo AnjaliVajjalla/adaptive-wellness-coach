@@ -1,6 +1,6 @@
 # Project Tracker
 
-Last updated: September 10, 2026, Sprint 5 completion
+Last updated: September 10, 2026, Sprint 6 completion
 
 ## Completed
 
@@ -62,7 +62,15 @@ Last updated: September 10, 2026, Sprint 5 completion
 - Verified live structured responses for plan explanation and fictional workout feedback
 - Identified a live output that included unwanted rest days and added a tested fallback rule
 - Isolated automated tests from real credentials so test runs cannot make paid API calls
-- Verified all 173 project tests inside Docker with Python 3.12 and pytest 9.1.1
+- Reached the Sprint 5 checkpoint with 173 passing project tests in Docker
+- Built a 20-case fictional JSONL dataset for structured feedback evaluation
+- Added deterministic whole-case and per-field grading
+- Added a local evaluation runner with explicit expected-versus-actual results
+- Measured a 95% whole-case live baseline across the harder 20-case dataset
+- Identified an ambiguous reference label instead of incorrectly changing the AI prompt
+- Clarified the evaluation case and passed a targeted live retest
+- Recorded measured results, methodology, and limitations in a baseline report
+- Verified all 179 project tests inside Docker with Python 3.12 and pytest 9.1.1
 
 ## Currently Learning
 
@@ -82,10 +90,14 @@ Last updated: September 10, 2026, Sprint 5 completion
 - Separating schema validation from application-specific AI business rules
 - Connecting the OpenAI Responses API through a replaceable provider boundary
 - Preventing secrets and paid external calls from entering automated tests
+- Separating schema validation, unit testing, and semantic AI evaluation
+- Designing synthetic reference cases and reviewing label ambiguity
+- Measuring whole-case and per-field accuracy
+- Using failure analysis to decide whether the model, prompt, or dataset should change
 
 ## Current Status
 
-- Sprints 0 through 5 are complete; Sprint 6 evaluation work is next
+- Sprints 0 through 6 are complete; Sprint 7 observability work is next
 
 ## Tested
 
@@ -125,7 +137,13 @@ Last updated: September 10, 2026, Sprint 5 completion
 - Explanations with extra or missing activity days trigger the deterministic fallback
 - Unknown exercise identifiers cannot reach later adjustment logic
 - Live fictional feedback was correctly classified without directly changing a plan
-- All 173 automated project tests pass inside Docker
+- The Sprint 5 checkpoint contained 173 passing automated tests in Docker
+- The JSONL evaluation dataset loads with 20 unique, schema-valid cases
+- The grader detects exact field mismatches while ignoring irrelevant list order
+- The evaluation runner reports whole-case and per-field accuracy
+- The harder live feedback baseline scored 95% before label clarification
+- The corrected ambiguous case passed a targeted live retest
+- All 179 automated project tests pass inside Docker
 
 ## Blocked
 
@@ -133,7 +151,7 @@ Last updated: September 10, 2026, Sprint 5 completion
 
 ## Planned
 
-- Build the Sprint 6 evaluation dataset and measure AI behavior systematically
+- Add Sprint 7 tracing, observability, latency measurement, and token and cost tracking
 
 ## Explicitly Out of Scope
 
