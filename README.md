@@ -67,6 +67,7 @@ Latest verified result: 144 tests passed inside Linux with Python 3.12 and pytes
 - [Safety-Screening Specification](docs/safety-screening-spec.md)
 - [Weekly Workout-Plan Specification](docs/weekly-plan-spec.md)
 - [Exercise Library Specification](docs/exercise-library-spec.md)
+- [AI Explanation and Feedback Specification](docs/ai-feature-spec.md)
 - [Sprint Plan](docs/sprint-plan.md)
 - [Project Tracker](docs/project-tracker.md)
 - [Decision Log](docs/decision-log.md)

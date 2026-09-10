@@ -69,6 +69,18 @@ SessionFocus = Literal[
 ]
 ActivityType = Literal["strength", "bodyweight", "cardio", "mobility"]
 PrescriptionType = Literal["sets_reps", "minutes"]
+FeedbackDifficulty = Literal[
+    "too_easy",
+    "appropriate",
+    "too_hard",
+    "not_stated",
+]
+RequestedFocus = Literal[
+    "strength",
+    "full_body_strength",
+    "cardio",
+    "mobility",
+]
 
 
 class UserProfile(BaseModel):
@@ -303,3 +315,55 @@ class WeeklyPlanResult(BaseModel):
                 "Blocked or confirmation results cannot contain a plan."
             )
         return self
+
+
+class DayExplanation(BaseModel):
+    """One AI-written explanation for a planned activity day."""
+
+    model_config = ConfigDict(strict=True, extra="forbid")
+
+    day: Weekday
+    explanation: str = Field(min_length=1)
+
+
+class PlanExplanation(BaseModel):
+    """Schema-constrained AI explanation of an existing plan."""
+
+    model_config = ConfigDict(strict=True, extra="forbid")
+
+    weekly_summary: str = Field(min_length=1)
+    day_explanations: list[DayExplanation] = Field(min_length=1)
+
+    @field_validator("day_explanations")
+    @classmethod
+    def reject_duplicate_explanation_days(cls, explanations):
+        days = [item.day for item in explanations]
+        if len(days) != len(set(days)):
+            raise ValueError("Each day can have only one explanation.")
+        return explanations
+
+
+class FeedbackInterpretation(BaseModel):
+    """Schema-constrained signals extracted from free-text feedback."""
+
+    model_config = ConfigDict(strict=True, extra="forbid")
+
+    difficulty: FeedbackDifficulty
+    missed_days: list[Weekday]
+    disliked_exercises: list[str]
+    requested_focus: RequestedFocus | None
+    requires_safety_rescreening: bool
+
+    @field_validator("missed_days", "disliked_exercises")
+    @classmethod
+    def reject_duplicate_feedback_values(cls, values):
+        if len(values) != len(set(values)):
+            raise ValueError("Duplicate feedback values are not allowed.")
+        return values
+
+    @field_validator("disliked_exercises")
+    @classmethod
+    def reject_blank_exercise_identifiers(cls, exercise_ids):
+        if any(not exercise_id.strip() for exercise_id in exercise_ids):
+            raise ValueError("Exercise identifiers cannot be blank.")
+        return exercise_ids
