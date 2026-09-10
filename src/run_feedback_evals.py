@@ -9,6 +9,7 @@ from src.evaluation import (
     load_feedback_cases,
     summarize_feedback_results,
 )
+from src.observability import summarize_ai_request_traces
 
 
 DEFAULT_DATASET_PATH = Path("evals/feedback_cases.jsonl")
@@ -19,9 +20,17 @@ def run_feedback_evaluation(
 ) -> dict:
     """Run all feedback cases with the configured AI provider."""
     cases = load_feedback_cases(dataset_path)
-    results = evaluate_feedback_cases(cases, interpret_workout_feedback)
+    traces = []
+
+    def interpret_with_trace(feedback):
+        return interpret_workout_feedback(feedback, trace_sink=traces.append)
+
+    results = evaluate_feedback_cases(cases, interpret_with_trace)
     return {
         "summary": summarize_feedback_results(results),
+        "observability": summarize_ai_request_traces(traces).model_dump(
+            mode="json"
+        ),
         "results": results,
     }
 

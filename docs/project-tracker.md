@@ -1,6 +1,6 @@
 # Project Tracker
 
-Last updated: September 10, 2026, Sprint 6 completion
+Last updated: September 10, 2026, Sprint 7 completion
 
 ## Completed
 
@@ -71,6 +71,13 @@ Last updated: September 10, 2026, Sprint 6 completion
 - Clarified the evaluation case and passed a targeted live retest
 - Recorded measured results, methodology, and limitations in a baseline report
 - Verified all 179 project tests inside Docker with Python 3.12 and pytest 9.1.1
+- Added privacy-conscious structured traces for AI requests
+- Recorded application trace IDs, OpenAI response IDs, outcomes, latency, and token usage
+- Added configurable model-specific cost estimation with separate cached-input pricing
+- Added aggregate request counts, status counts, success rate, average and P95 latency, total tokens, and estimated cost
+- Integrated operational metrics into the feedback evaluation report
+- Verified one live fictional request at 5.13 seconds, 514 tokens, and an estimated cost of $0.000503
+- Verified all 188 project tests inside Docker with Python 3.12 and pytest 9.1.1
 
 ## Currently Learning
 
@@ -94,10 +101,13 @@ Last updated: September 10, 2026, Sprint 6 completion
 - Designing synthetic reference cases and reviewing label ambiguity
 - Measuring whole-case and per-field accuracy
 - Using failure analysis to decide whether the model, prompt, or dataset should change
+- Distinguishing individual request traces from aggregate operational metrics
+- Measuring average and P95 latency, token usage, and estimated API cost
+- Designing logs that support debugging without storing secrets or raw feedback
 
 ## Current Status
 
-- Sprints 0 through 6 are complete; Sprint 7 observability work is next
+- Sprints 0 through 7 are complete; Sprint 8 CI/CD work is next
 
 ## Tested
 
@@ -144,6 +154,11 @@ Last updated: September 10, 2026, Sprint 6 completion
 - The harder live feedback baseline scored 95% before label clarification
 - The corrected ambiguous case passed a targeted live retest
 - All 179 automated project tests pass inside Docker
+- AI traces omit API keys and raw user feedback while recording safe request metadata
+- Cost estimates use configurable prices only when the configured pricing model matches the requested model
+- Synthetic trace aggregation reports reliability, average and P95 latency, tokens, and cost
+- The evaluation runner combines quality and operational summaries
+- All 188 automated project tests pass inside Docker
 
 ## Blocked
 
@@ -151,7 +166,7 @@ Last updated: September 10, 2026, Sprint 6 completion
 
 ## Planned
 
-- Add Sprint 7 tracing, observability, latency measurement, and token and cost tracking
+- Strengthen Docker and add CI/CD automation in Sprint 8
 
 ## Explicitly Out of Scope
 

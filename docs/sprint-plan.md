@@ -227,7 +227,36 @@ targeted live retest passed every field. All 179 project tests pass in Docker.
 as the model. A failed comparison should be reviewed before changing a prompt,
 because an ambiguous label can make reasonable model behavior look incorrect.
 
+## Sprint 7: AI Observability and Cost Tracking
+
+**Status:** Complete
+
+**Goal:** Make AI-assisted behavior traceable and measure its reliability,
+latency, token usage, and estimated cost without recording private input text.
+
+**Acceptance criteria:**
+
+- Every attempted AI request records a unique application trace ID and outcome
+- Successful responses record the OpenAI response ID and available token usage
+- Trace logs exclude API keys and user-provided feedback text
+- Token prices are configurable and tied to the selected model
+- Multiple traces can be summarized by status, success rate, average and P95 latency, total tokens, and estimated cost
+- Evaluation reports combine output-quality and operational measurements
+
+**Review:** Structured traces now record safe operational metadata for plan
+explanations and feedback interpretation. A live fictional request completed in
+5.13 seconds using 514 total tokens with an estimated cost of $0.000503. This
+is one verification sample, not a performance average. The evaluation runner
+now combines quality and observability summaries. All 188 project tests pass
+in Docker.
+
+**Retrospective:** A correct AI result is not sufficient evidence of production
+quality. Reliability, tail latency, token usage, and cost must also be visible.
+Keeping pricing configurable avoids presenting stale estimates as billing
+facts, and privacy-conscious traces support debugging without storing raw
+feedback.
+
 ## Later Planning
 
-After Sprint 6, add observability, CI/CD, a simple web interface, deployment,
-and public presentation.
+After Sprint 7, add CI/CD, a simple web interface, deployment, and public
+presentation.

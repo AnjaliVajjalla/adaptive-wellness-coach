@@ -1,12 +1,19 @@
 """AI-assisted features with deterministic fallback behavior."""
 
 import json
+from collections.abc import Callable
+from time import perf_counter
 from typing import Protocol
 
 from src.models import (
     FeedbackInterpretation,
     PlanExplanation,
     WeeklyPlanResult,
+)
+from src.observability import (
+    TraceSink,
+    build_ai_request_trace,
+    emit_ai_request_trace,
 )
 
 
@@ -56,8 +63,12 @@ def generate_plan_explanation(
     plan: WeeklyPlanResult,
     responses_client: StructuredResponsesClient,
     model: str,
+    trace_sink: TraceSink = emit_ai_request_trace,
+    clock: Callable[[], float] = perf_counter,
 ) -> tuple[PlanExplanation, bool]:
     """Return an AI explanation, or the deterministic fallback on failure."""
+    started_at = clock()
+    response = None
     try:
         response = responses_client.parse(
             model=model,
@@ -79,9 +90,23 @@ def generate_plan_explanation(
                 "AI explanations must match the plan's non-rest days."
             )
     except Exception:
-        return deterministic_plan_explanation(plan), True
+        explanation = deterministic_plan_explanation(plan)
+        used_fallback = True
+        status = "fallback"
+    else:
+        used_fallback = False
+        status = "succeeded"
 
-    return explanation, False
+    trace_sink(
+        build_ai_request_trace(
+            operation="plan_explanation",
+            model=model,
+            status=status,
+            latency_ms=max((clock() - started_at) * 1000, 0),
+            response=response,
+        )
+    )
+    return explanation, used_fallback
 
 
 def interpret_feedback(
@@ -89,11 +114,15 @@ def interpret_feedback(
     known_exercise_ids: list[str],
     responses_client: StructuredResponsesClient,
     model: str,
+    trace_sink: TraceSink = emit_ai_request_trace,
+    clock: Callable[[], float] = perf_counter,
 ) -> FeedbackInterpretation | None:
     """Return validated feedback signals, or None when interpretation fails."""
     if not feedback.strip():
         raise ValueError("Feedback cannot be blank.")
 
+    started_at = clock()
+    response = None
     try:
         response = responses_client.parse(
             model=model,
@@ -117,6 +146,18 @@ def interpret_feedback(
         if unknown_exercises:
             raise ValueError("AI returned an unknown exercise identifier.")
     except Exception:
-        return None
+        interpretation = None
+        status = "rejected" if response is not None else "failed"
+    else:
+        status = "succeeded"
 
+    trace_sink(
+        build_ai_request_trace(
+            operation="feedback_interpretation",
+            model=model,
+            status=status,
+            latency_ms=max((clock() - started_at) * 1000, 0),
+            response=response,
+        )
+    )
     return interpretation

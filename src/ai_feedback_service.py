@@ -5,6 +5,7 @@ from collections.abc import Callable
 from src.ai_service import interpret_feedback
 from src.exercise_library import EXERCISE_LIBRARY
 from src.models import FeedbackInterpretationResponse
+from src.observability import TraceSink, emit_ai_request_trace
 from src.openai_provider import (
     OpenAIConfigurationError,
     OpenAIProvider,
@@ -20,6 +21,7 @@ KNOWN_EXERCISE_IDS = [
 def interpret_workout_feedback(
     feedback: str,
     provider_factory: Callable[[], OpenAIProvider] | None = None,
+    trace_sink: TraceSink = emit_ai_request_trace,
 ) -> FeedbackInterpretationResponse:
     """Return validated signals, or no interpretation on AI failure."""
     factory = provider_factory or create_openai_provider
@@ -36,6 +38,7 @@ def interpret_workout_feedback(
         KNOWN_EXERCISE_IDS,
         provider.responses_client,
         provider.model,
+        trace_sink=trace_sink,
     )
     return FeedbackInterpretationResponse(
         interpretation=interpretation,

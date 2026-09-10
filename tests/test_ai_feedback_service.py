@@ -25,14 +25,18 @@ def test_configured_provider_returns_validated_feedback_signals():
         }
     )
 
+    traces = []
     result = interpret_workout_feedback(
         "Wednesday was too difficult and I disliked wall push-ups.",
         lambda: OpenAIProvider(client, "fictional-model"),
+        trace_sink=traces.append,
     )
 
     assert result.interpretation_succeeded is True
     assert result.interpretation.difficulty == "too_hard"
     assert result.interpretation.disliked_exercises == ["wall_push_up"]
+    assert len(traces) == 1
+    assert traces[0].operation == "feedback_interpretation"
 
 
 def test_missing_configuration_returns_no_interpretation():

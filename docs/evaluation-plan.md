@@ -55,8 +55,8 @@ No evaluation percentage, performance result, or resume metric may be reported u
 ## Current Status
 
 Input validation, deterministic safety screening, plan generation, structured
-Pydantic contracts, guarded AI services, evaluation behavior, and API behavior
-are covered by 179 automated tests in Docker.
+Pydantic contracts, guarded AI services, evaluation behavior, observability,
+and API behavior are covered by 188 automated tests in Docker.
 
 The live 20-case feedback baseline scored 95% whole-case accuracy. Four fields
 scored 100%, while difficulty scored 95%. Review showed that the only failed
@@ -64,3 +64,8 @@ case had an ambiguous reference label. The case wording was clarified, and a
 targeted live retest passed every field. See the
 [Feedback Evaluation Baseline](../evals/results/feedback-baseline.md) for the
 measured results and limitations.
+
+The evaluation runner also summarizes operational evidence across its AI
+requests: outcome counts, success rate, average and P95 latency, token usage,
+and estimated cost. Pricing is configurable and model-matched, so the local
+estimate is supporting evidence rather than a replacement for billing records.
