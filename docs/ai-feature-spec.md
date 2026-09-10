@@ -13,6 +13,8 @@ The AI receives a completed, validated weekly plan and returns:
 
 The AI must not add exercises, change the schedule, alter prescriptions or totals, make medical claims, or override safety decisions.
 
+The returned explanation days must exactly match the plan's workout and recovery days. Extra rest days or missing activity days trigger the deterministic fallback.
+
 ## Feedback Interpretation
 
 The AI receives free-text feedback and returns:
@@ -24,6 +26,8 @@ The AI receives free-text feedback and returns:
 - `requires_safety_rescreening`: whether the feedback may contain a new safety concern
 
 The AI extracts signals only. Deterministic Python validates the output and decides which approved adjustment rules to apply.
+
+Exercise identifiers are checked against the server-owned exercise library. The client does not supply the allowed identifier list.
 
 ## Required Processing Order
 
@@ -39,6 +43,14 @@ The AI extracts signals only. Deterministic Python validates the output and deci
 - If the AI output fails validation, reject it and use the fallback behavior.
 - If feedback may indicate a new safety concern, do not automatically adjust the plan. Require safety rescreening.
 - Never allow AI output to bypass the existing validation or safety gates.
+- Automated tests must use fake clients and must not inherit real API credentials.
+
+## API Endpoints
+
+- `POST /ai/plan-explanations`: returns a validated explanation and whether the deterministic fallback was used
+- `POST /ai/feedback-interpretations`: returns validated feedback signals or an explicit unsuccessful result
+
+The provider reads `OPENAI_API_KEY` and `OPENAI_MODEL` from local environment settings. Secrets are not stored in source code or Docker images.
 
 ## Acceptance Criteria
 

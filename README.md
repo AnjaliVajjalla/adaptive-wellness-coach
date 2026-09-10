@@ -4,9 +4,9 @@ A personalized AI wellness-planning tool that creates and adapts weekly workout 
 
 ## Project Status
 
-Sprints 1 through 4 are complete. The project now validates fictional profiles with strict Pydantic models, applies safety screening, generates deterministic seven-day workout plans, and exposes the workflow through a FastAPI service.
+Sprints 0 through 5 are complete. The project now validates fictional profiles, applies safety screening, generates deterministic seven-day workout plans, and provides guarded AI-assisted plan explanations and feedback interpretation through FastAPI.
 
-The current suite contains 144 passing scenarios covering profile validation, safety screening, exercise-library integrity, scheduling, personalization, prescriptions, structured data contracts, service integration, and API behavior.
+The current suite contains 173 passing scenarios covering profile validation, safety screening, exercise-library integrity, scheduling, personalization, prescriptions, structured data contracts, AI failure handling, service integration, and API behavior.
 
 ## Product Overview
 
@@ -38,6 +38,7 @@ See [Safety Boundaries](docs/safety-boundaries.md) and the [Safety-Screening Spe
 - Sprint 2: Safety-screening rules and tests
 - Sprint 3: Basic weekly workout-plan foundation and tests
 - Sprint 4: Pydantic data contracts, structured outputs, and FastAPI endpoints
+- Sprint 5: AI-assisted explanations and feedback interpretation
 
 See [Sprint Plan](docs/sprint-plan.md) for acceptance criteria.
 
@@ -47,7 +48,7 @@ With Docker Desktop running:
 
 ```bash
 docker build -t adaptive-wellness-coach:api .
-docker run --rm -p 8000:8000 adaptive-wellness-coach:api
+docker run --rm -p 8000:8000 --env-file .env adaptive-wellness-coach:api
 ```
 
 Open `http://127.0.0.1:8000/docs` to use the interactive API documentation.
@@ -58,7 +59,7 @@ Run the test suite with:
 docker run --rm adaptive-wellness-coach:api python -m pytest
 ```
 
-Latest verified result: 144 tests passed inside Linux with Python 3.12 and pytest 9.1.1.
+Latest verified result: 173 tests passed inside Linux with Python 3.12 and pytest 9.1.1.
 
 ## Documentation
 
@@ -76,4 +77,4 @@ Latest verified result: 144 tests passed inside Linux with Python 3.12 and pytes
 
 ## Development Note
 
-The repository is being built in small, tested checkpoints. AI-assisted behavior, evaluation, observability, CI/CD, a web interface, and deployment will be documented as implemented only after they are verified.
+The repository is being built in small, tested checkpoints. Broader evaluation, observability, CI/CD, a web interface, and deployment will be documented as implemented only after they are verified.

@@ -21,6 +21,7 @@ This file records major product, safety, and technical decisions. Git history re
 | D-015 | Add `Bicycle or stationary bike` as an equipment option and treat `Full gym access` as access to every supported equipment category. | This lets the generator determine when a cycling preference can be fulfilled without requiring users to list common gym equipment separately. | Approved |
 | D-016 | Use goal-based session mixes, recovery-aware scheduling, preference rotation, movement-pattern balance, conservative prescriptions, beginner repetition, and returning-user exercise rotation. | These deterministic rules make plans personalized, explainable, and testable while keeping the first version appropriately limited. | Approved |
 | D-017 | Use strict Pydantic models at the API boundary, preserve the deterministic planner behind a service layer, and expose health and plan-generation endpoints with FastAPI. | This separates data validation, business logic, and HTTP delivery while producing documented, testable structured inputs and outputs. | Approved |
+| D-018 | Limit OpenAI to plan explanations and feedback extraction, then validate its structured output with Pydantic and deterministic business rules before use. | Language understanding adds value here, while planning, calculations, safety, and final authorization require predictable behavior and safe fallbacks. | Approved |
 
 ## How to Update This Log
 

@@ -52,4 +52,4 @@ No evaluation percentage, performance result, or resume metric may be reported u
 
 ## Current Status
 
-Input validation, deterministic safety screening, plan generation, structured Pydantic contracts, and API behavior are covered by automated tests. On September 10, 2026, all 144 project tests passed inside Docker. AI-output evaluation and a dedicated evaluation dataset remain pending.
+Input validation, deterministic safety screening, plan generation, structured Pydantic contracts, guarded AI services, and API behavior are covered by automated tests. On September 10, 2026, all 173 project tests passed inside Docker. Initial live checks confirmed structured plan explanation and feedback extraction. One live explanation included unwanted rest days, which produced a new deterministic validation rule and regression test. A dedicated evaluation dataset and aggregate AI-quality metrics remain pending.

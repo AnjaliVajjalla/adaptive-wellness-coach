@@ -183,6 +183,25 @@
 
 **Retrospective:** Keeping the API, service, and deterministic planning layers separate made each responsibility easier to test. Automatic API documentation also made response behavior visible without building a web interface prematurely.
 
+## Sprint 5: AI-Assisted Explanations and Feedback
+
+**Status:** Complete
+
+**Goal:** Add focused AI behavior without allowing the model to control planning or safety decisions.
+
+**Acceptance criteria:**
+
+- Plan explanations and feedback signals use strict Pydantic contracts
+- OpenAI configuration remains outside source control
+- Plan explanations cannot alter the underlying plan
+- Feedback interpretation cannot invent accepted exercise identifiers
+- AI and configuration failures have tested safe behavior
+- Automated tests never make paid external requests
+
+**Review:** The API now exposes guarded endpoints for plan explanations and feedback interpretation. Live fictional inputs produced structured outputs, and a live rest-day mismatch led to an additional deterministic business-rule check. All 173 project tests pass in Docker.
+
+**Retrospective:** A response can satisfy its JSON schema while still violating a product rule. Combining structured outputs, Pydantic validation, deterministic business checks, and isolated test doubles provides stronger protection than any one layer alone.
+
 ## Later Planning
 
-After Sprint 4, plan AI-assisted explanations and feedback interpretation, broader evaluation, observability, CI/CD, a simple web interface, deployment, and public presentation.
+After Sprint 5, build a dedicated evaluation dataset, then add observability, CI/CD, a simple web interface, deployment, and public presentation.

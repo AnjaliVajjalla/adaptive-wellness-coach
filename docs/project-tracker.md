@@ -1,6 +1,6 @@
 # Project Tracker
 
-Last updated: September 10, 2026, Sprint 4 completion
+Last updated: September 10, 2026, Sprint 5 completion
 
 ## Completed
 
@@ -54,6 +54,15 @@ Last updated: September 10, 2026, Sprint 4 completion
 - Updated Docker to run the API by default while supporting test-command overrides
 - Tested generated, blocked, and invalid API outcomes through Swagger UI
 - Verified all 144 project tests inside Docker with Python 3.12 and pytest 9.1.1
+- Defined strict Pydantic contracts for plan explanations and feedback signals
+- Added the OpenAI Responses API provider with environment-based secret configuration
+- Added guarded FastAPI endpoints for plan explanations and feedback interpretation
+- Kept planning decisions deterministic and limited AI to language explanation and extraction
+- Added deterministic checks for unknown exercise identifiers and explanation-day mismatches
+- Verified live structured responses for plan explanation and fictional workout feedback
+- Identified a live output that included unwanted rest days and added a tested fallback rule
+- Isolated automated tests from real credentials so test runs cannot make paid API calls
+- Verified all 173 project tests inside Docker with Python 3.12 and pytest 9.1.1
 
 ## Currently Learning
 
@@ -70,10 +79,13 @@ Last updated: September 10, 2026, Sprint 4 completion
 - Defining strict Pydantic data contracts and nested structured outputs
 - Connecting validated application logic to FastAPI endpoints
 - Distinguishing HTTP validation errors from valid blocked business outcomes
+- Separating schema validation from application-specific AI business rules
+- Connecting the OpenAI Responses API through a replaceable provider boundary
+- Preventing secrets and paid external calls from entering automated tests
 
 ## Current Status
 
-- Sprints 0 through 4 are complete; Sprint 5 planning is next
+- Sprints 0 through 5 are complete; Sprint 6 evaluation work is next
 
 ## Tested
 
@@ -108,6 +120,12 @@ Last updated: September 10, 2026, Sprint 4 completion
 - FastAPI returns `422` for invalid requests, `200` with `blocked` for valid unsafe requests, and `200` with `generated` for valid safe requests
 - Generated API responses satisfy the nested weekly-plan output contract
 - All 144 automated project tests pass inside Docker
+- AI explanations and feedback interpretations satisfy strict Pydantic contracts
+- Missing configuration and external AI failures use safe, explicit failure behavior
+- Explanations with extra or missing activity days trigger the deterministic fallback
+- Unknown exercise identifiers cannot reach later adjustment logic
+- Live fictional feedback was correctly classified without directly changing a plan
+- All 173 automated project tests pass inside Docker
 
 ## Blocked
 
@@ -115,7 +133,7 @@ Last updated: September 10, 2026, Sprint 4 completion
 
 ## Planned
 
-- Plan Sprint 5 AI-assisted explanations and feedback interpretation
+- Build the Sprint 6 evaluation dataset and measure AI behavior systematically
 
 ## Explicitly Out of Scope
 
