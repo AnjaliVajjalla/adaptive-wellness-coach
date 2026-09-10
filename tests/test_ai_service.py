@@ -2,7 +2,9 @@
 
 from types import SimpleNamespace
 
-from src.ai_service import generate_plan_explanation
+import pytest
+
+from src.ai_service import generate_plan_explanation, interpret_feedback
 from src.models import WeeklyPlanResult
 from src.weekly_plan_generator import generate_weekly_plan
 
@@ -109,3 +111,113 @@ def test_invalid_ai_output_uses_deterministic_fallback():
 
     assert explanation.weekly_summary == plan.weekly_summary
     assert used_fallback is True
+
+
+def test_valid_feedback_interpretation_is_returned():
+    client = FakeResponsesClient(
+        output={
+            "difficulty": "too_hard",
+            "missed_days": ["Wednesday"],
+            "disliked_exercises": ["wall_push_up"],
+            "requested_focus": None,
+            "requires_safety_rescreening": False,
+        }
+    )
+
+    interpretation = interpret_feedback(
+        "Wednesday was too hard and I disliked wall push-ups.",
+        ["wall_push_up", "sit_to_stand"],
+        client,
+        "fictional-model",
+    )
+
+    assert interpretation is not None
+    assert interpretation.difficulty == "too_hard"
+    assert interpretation.disliked_exercises == ["wall_push_up"]
+    assert client.received["text_format"].__name__ == "FeedbackInterpretation"
+
+
+def test_feedback_client_error_makes_no_adjustment():
+    client = FakeResponsesClient(error=RuntimeError("service unavailable"))
+
+    interpretation = interpret_feedback(
+        "The workout felt difficult.",
+        ["wall_push_up"],
+        client,
+        "fictional-model",
+    )
+
+    assert interpretation is None
+
+
+def test_unknown_exercise_identifier_makes_no_adjustment():
+    client = FakeResponsesClient(
+        output={
+            "difficulty": "not_stated",
+            "missed_days": [],
+            "disliked_exercises": ["invented_exercise"],
+            "requested_focus": None,
+            "requires_safety_rescreening": False,
+        }
+    )
+
+    interpretation = interpret_feedback(
+        "I disliked an exercise.",
+        ["wall_push_up"],
+        client,
+        "fictional-model",
+    )
+
+    assert interpretation is None
+
+
+def test_possible_new_injury_is_flagged_for_rescreening():
+    client = FakeResponsesClient(
+        output={
+            "difficulty": "not_stated",
+            "missed_days": [],
+            "disliked_exercises": [],
+            "requested_focus": None,
+            "requires_safety_rescreening": True,
+        }
+    )
+
+    interpretation = interpret_feedback(
+        "I developed a new injury.",
+        ["wall_push_up"],
+        client,
+        "fictional-model",
+    )
+
+    assert interpretation is not None
+    assert interpretation.requires_safety_rescreening is True
+
+
+def test_invalid_feedback_output_makes_no_adjustment():
+    client = FakeResponsesClient(
+        output={
+            "difficulty": "extremely_difficult",
+            "missed_days": [],
+            "disliked_exercises": [],
+            "requested_focus": None,
+            "requires_safety_rescreening": False,
+        }
+    )
+
+    interpretation = interpret_feedback(
+        "The workout was extremely difficult.",
+        ["wall_push_up"],
+        client,
+        "fictional-model",
+    )
+
+    assert interpretation is None
+
+
+def test_blank_feedback_is_rejected_before_ai_call():
+    client = FakeResponsesClient(output=None)
+
+    with pytest.raises(ValueError, match="Feedback cannot be blank"):
+        interpret_feedback("   ", [], client, "fictional-model")
+
+    assert client.received is None
