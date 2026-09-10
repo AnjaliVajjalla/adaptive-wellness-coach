@@ -81,12 +81,14 @@ The generator does not recommend an exact weight.
 
 The total session duration includes the warm-up, main exercises, and cool-down.
 
-| Selected duration | Main exercises |
-| --- | --- |
-| 15 minutes | 2 to 3 |
-| 30 minutes | 3 to 4 |
-| 45 minutes | 4 to 5 |
-| 60 minutes | 5 to 6 |
+| Selected duration | Strength exercises | Cardio activities | Mobility activities |
+| --- | --- | --- | --- |
+| 15 minutes | Up to 3 | 1 | Up to 2 |
+| 30 minutes | Up to 5 | 1 | Up to 2 |
+| 45 minutes | Up to 7 | 1 | Up to 2 |
+| 60 minutes | Up to 8 | 1 | Up to 2 |
+
+Complete beginners receive 2 sets of 8 to 12 repetitions for strength exercises. Returning users receive 3 sets of 8 to 12 repetitions. Cardio uses one eligible activity, while mobility time may be divided between two eligible activities.
 
 ## Weekly Frequency Rules
 
@@ -114,6 +116,8 @@ on every selected day.
   including a bicycle or stationary bike.
 - Intensity is interpreted relative to the fictional user's experience level.
 - Each workout day includes one brief explanation of why it was selected.
+- Complete beginners repeat the same balanced strength selection for consistency.
+- Returning users rotate eligible strength exercises while preserving movement variety.
 
 ## Weekly Totals
 

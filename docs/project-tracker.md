@@ -1,6 +1,6 @@
 # Project Tracker
 
-Last updated: September 6, 2026, Sprint 3 exercise-library completion
+Last updated: September 9, 2026, Sprint 3 generator implementation
 
 ## Completed
 
@@ -41,6 +41,12 @@ Last updated: September 6, 2026, Sprint 3 exercise-library completion
 - Built a reviewed library of 27 cardio, bodyweight, strength, and mobility activities
 - Added structured exercise metadata for equipment, experience, goals, preferences, prescriptions, and source traceability
 - Added 6 library-integrity tests and verified all 69 project tests in Docker
+- Implemented deterministic workout-day scheduling with recovery-aware spacing
+- Implemented goal and experience-based session mixes, preference rotation, and flexible-focus resolution
+- Implemented exercise filtering, preference ranking, movement-pattern balance, and returning-user exercise rotation
+- Added structured strength, cardio, and mobility prescriptions within the selected session duration
+- Integrated profile validation, safety screening, intensity confirmation, seven-day output, rest days, explanations, and weekly totals
+- Verified all 122 project tests inside Docker with Python 3.12 and pytest 9.1.1
 
 ## Currently Learning
 
@@ -53,10 +59,11 @@ Last updated: September 6, 2026, Sprint 3 exercise-library completion
 - Docker command overrides, temporary containers, and bind mounts
 - Comparing pytest's actual and expected results during failure investigation
 - Designing controlled, source-traceable data for deterministic selection
+- Combining small deterministic helpers into one gated planning workflow
 
 ## Current Status
 
-- Sprint 2 is complete; Sprint 3's exercise library is complete and weekly plan generation is next
+- Sprint 2 is complete; Sprint 3 implementation and automated testing are complete, with final review and board synchronization remaining
 
 ## Tested
 
@@ -83,6 +90,10 @@ Last updated: September 6, 2026, Sprint 3 exercise-library completion
 - Exercise records use unique identifiers and complete, approved metadata
 - Every approved goal, activity preference, and equipment category is represented
 - All 69 automated project tests pass inside Docker
+- Invalid, unsafe, and unconfirmed challenging profiles cannot reach plan generation
+- Generated plans contain seven ordered days and respect availability, experience, equipment, preferences, dislikes, and duration
+- Beginner strength sessions repeat for consistency; returning-user sessions rotate exercises
+- All 122 automated project tests pass inside Docker
 
 ## Blocked
 
@@ -90,8 +101,7 @@ Last updated: September 6, 2026, Sprint 3 exercise-library completion
 
 ## Planned
 
-- Implement weekly plan generation using the approved exercise library
-- Test scheduling, filtering, prescriptions, totals, and blocked outcomes
+- Review one generated fictional plan and complete the Sprint 3 status sync
 
 ## Explicitly Out of Scope
 

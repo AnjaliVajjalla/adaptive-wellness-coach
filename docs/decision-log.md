@@ -19,6 +19,7 @@ This file records major product, safety, and technical decisions. Git history re
 | D-013 | Treat available days as scheduling options and limit complete beginners to three workout days and returning users to four, with recovery spacing when possible. | This prevents availability from automatically becoming an excessive workout schedule. | Approved |
 | D-014 | Preserve a challenging-intensity selection but require confirmation when the fictional user is a complete beginner or sedentary. | This respects user choice while adding a clear warning and keeping exercise selection appropriate to experience. | Approved |
 | D-015 | Add `Bicycle or stationary bike` as an equipment option and treat `Full gym access` as access to every supported equipment category. | This lets the generator determine when a cycling preference can be fulfilled without requiring users to list common gym equipment separately. | Approved |
+| D-016 | Use goal-based session mixes, recovery-aware scheduling, preference rotation, movement-pattern balance, conservative prescriptions, beginner repetition, and returning-user exercise rotation. | These deterministic rules make plans personalized, explainable, and testable while keeping the first version appropriately limited. | Approved |
 
 ## How to Update This Log
 

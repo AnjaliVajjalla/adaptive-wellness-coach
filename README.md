@@ -4,9 +4,9 @@ A personalized AI wellness-planning tool that creates and adapts weekly workout 
 
 ## Project Status
 
-Sprints 1 and 2 are complete. Sprint 3's reviewed exercise library is implemented and tested; weekly plan generation is next.
+Sprints 1 and 2 are complete. Sprint 3's reviewed exercise library and deterministic weekly-plan generator are implemented and tested; the sprint review remains.
 
-The current suite contains 69 passing scenarios: 37 profile-validation scenarios, 26 safety-screening scenarios, and 6 exercise-library integrity scenarios. Workout-plan generation is not implemented yet.
+The current suite contains 122 passing scenarios covering profile validation, safety screening, exercise-library integrity, scheduling, personalization, prescriptions, and complete weekly-plan generation.
 
 ## Product Overview
 
@@ -49,7 +49,7 @@ docker build -t adaptive-wellness-coach:test .
 docker run --rm adaptive-wellness-coach:test
 ```
 
-Latest verified result: 69 tests passed inside Linux with Python 3.12 and pytest 9.1.1.
+Latest verified result: 122 tests passed inside Linux with Python 3.12 and pytest 9.1.1.
 
 ## Documentation
 
