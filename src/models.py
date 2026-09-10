@@ -343,6 +343,29 @@ class PlanExplanation(BaseModel):
         return explanations
 
 
+class PlanExplanationRequest(BaseModel):
+    """A generated weekly plan submitted for AI explanation."""
+
+    model_config = ConfigDict(strict=True, extra="forbid")
+
+    plan: WeeklyPlanResult
+
+    @model_validator(mode="after")
+    def require_generated_plan(self):
+        if self.plan.status != "generated":
+            raise ValueError("Only a generated plan can be explained.")
+        return self
+
+
+class PlanExplanationResponse(BaseModel):
+    """Validated explanation plus transparent fallback metadata."""
+
+    model_config = ConfigDict(strict=True, extra="forbid")
+
+    explanation: PlanExplanation
+    used_fallback: bool
+
+
 class FeedbackInterpretation(BaseModel):
     """Schema-constrained signals extracted from free-text feedback."""
 

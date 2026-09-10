@@ -92,9 +92,42 @@ def test_plan_endpoint_returns_blocked_safety_result(valid_plan_request):
     assert response.json()["days"] == []
 
 
-def test_openapi_schema_documents_both_endpoints():
+def test_explanation_endpoint_returns_fallback_without_configuration(
+    valid_plan_request,
+    monkeypatch,
+):
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.delenv("OPENAI_MODEL", raising=False)
+    plan_response = client.post("/plans", json=valid_plan_request)
+
+    response = client.post(
+        "/ai/plan-explanations",
+        json={"plan": plan_response.json()},
+    )
+
+    assert response.status_code == 200
+    assert response.json()["used_fallback"] is True
+    assert response.json()["explanation"]["weekly_summary"]
+
+
+def test_explanation_endpoint_rejects_blocked_plan(valid_plan_request):
+    valid_plan_request["safety_answers"][
+        "current_injury_or_rehabilitation"
+    ] = True
+    plan_response = client.post("/plans", json=valid_plan_request)
+
+    response = client.post(
+        "/ai/plan-explanations",
+        json={"plan": plan_response.json()},
+    )
+
+    assert response.status_code == 422
+
+
+def test_openapi_schema_documents_all_endpoints():
     response = client.get("/openapi.json")
 
     assert response.status_code == 200
     assert "/health" in response.json()["paths"]
     assert "/plans" in response.json()["paths"]
+    assert "/ai/plan-explanations" in response.json()["paths"]

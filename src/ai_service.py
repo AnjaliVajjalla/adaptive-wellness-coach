@@ -13,8 +13,9 @@ from src.models import (
 PLAN_EXPLANATION_INSTRUCTIONS = """
 Explain the supplied weekly workout plan in concise, supportive language.
 Return one short weekly summary and one sentence for each workout or recovery
-day. Do not add or remove exercises, change scheduling, prescriptions, totals,
-or safety decisions, and do not provide medical advice.
+day. Return no explanations for rest days. Do not add or remove exercises,
+change scheduling, prescriptions, totals, or safety decisions, and do not
+provide medical advice.
 """.strip()
 
 FEEDBACK_INTERPRETATION_INSTRUCTIONS = """
@@ -67,6 +68,16 @@ def generate_plan_explanation(
         if response.output_parsed is None:
             raise ValueError("The AI response did not contain parsed output.")
         explanation = PlanExplanation.model_validate(response.output_parsed)
+        expected_days = {
+            day.day for day in plan.days if day.day_type != "rest"
+        }
+        explained_days = {
+            item.day for item in explanation.day_explanations
+        }
+        if explained_days != expected_days:
+            raise ValueError(
+                "AI explanations must match the plan's non-rest days."
+            )
     except Exception:
         return deterministic_plan_explanation(plan), True
 

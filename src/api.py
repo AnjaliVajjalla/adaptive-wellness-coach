@@ -2,7 +2,14 @@
 
 from fastapi import FastAPI
 
-from src.models import HealthResponse, PlanGenerationRequest, WeeklyPlanResult
+from src.ai_plan_service import explain_weekly_plan
+from src.models import (
+    HealthResponse,
+    PlanExplanationRequest,
+    PlanExplanationResponse,
+    PlanGenerationRequest,
+    WeeklyPlanResult,
+)
 from src.plan_service import create_weekly_plan
 
 
@@ -26,3 +33,14 @@ def health_check() -> HealthResponse:
 def generate_plan(request: PlanGenerationRequest) -> WeeklyPlanResult:
     """Validate input and return a generated, blocked, or warning result."""
     return create_weekly_plan(request)
+
+
+@app.post(
+    "/ai/plan-explanations",
+    response_model=PlanExplanationResponse,
+)
+def explain_plan(
+    request: PlanExplanationRequest,
+) -> PlanExplanationResponse:
+    """Explain a generated plan without allowing AI to modify it."""
+    return explain_weekly_plan(request.plan)

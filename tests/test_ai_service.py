@@ -58,7 +58,15 @@ def test_valid_ai_explanation_is_returned():
                 {
                     "day": "Monday",
                     "explanation": "This session develops full-body strength.",
-                }
+                },
+                {
+                    "day": "Wednesday",
+                    "explanation": "This session repeats core movements.",
+                },
+                {
+                    "day": "Friday",
+                    "explanation": "This session develops stamina.",
+                },
             ],
         }
     )
@@ -70,6 +78,28 @@ def test_valid_ai_explanation_is_returned():
     assert explanation.weekly_summary.startswith("Three approachable")
     assert used_fallback is False
     assert client.received["text_format"].__name__ == "PlanExplanation"
+
+
+def test_explanation_for_rest_day_uses_deterministic_fallback():
+    plan = fictional_plan()
+    client = FakeResponsesClient(
+        output={
+            "weekly_summary": "Three sessions support steady progress.",
+            "day_explanations": [
+                {"day": "Monday", "explanation": "Strength session."},
+                {"day": "Tuesday", "explanation": "Rest day."},
+                {"day": "Wednesday", "explanation": "Strength session."},
+                {"day": "Friday", "explanation": "Cardio session."},
+            ],
+        }
+    )
+
+    explanation, used_fallback = generate_plan_explanation(
+        plan, client, "fictional-model"
+    )
+
+    assert used_fallback is True
+    assert explanation.weekly_summary == plan.weekly_summary
 
 
 def test_client_error_uses_deterministic_fallback():
