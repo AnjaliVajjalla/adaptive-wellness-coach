@@ -164,6 +164,25 @@
 
 **Retrospective:** Small deterministic helpers made the planner explainable and easier to test. Future evaluation should expand the exercise library and identify where additional variety is useful.
 
+## Sprint 4: Structured API Service
+
+**Status:** Complete
+
+**Goal:** Expose the validated weekly-plan workflow through strict data models and HTTP endpoints.
+
+**Acceptance criteria:**
+
+- Pydantic models validate the complete request and response structures
+- The existing deterministic planner remains the source of planning decisions
+- FastAPI provides health and plan-generation endpoints
+- Invalid requests return clear validation errors
+- Valid unsafe requests remain blocked before plan generation
+- The application and full test suite run inside Docker
+
+**Review:** The service now validates API input and output with Pydantic, connects those contracts to the existing planner through a typed service layer, and exposes `GET /health` and `POST /plans`. Swagger testing confirmed generated, blocked, and invalid outcomes. All 144 project tests pass in Docker.
+
+**Retrospective:** Keeping the API, service, and deterministic planning layers separate made each responsibility easier to test. Automatic API documentation also made response behavior visible without building a web interface prematurely.
+
 ## Later Planning
 
-After Sprint 3, plan the FastAPI service, vector retrieval, Dockerized application runtime, Azure deployment, security hardening, CI/CD, monitoring, AI-assisted explanations, feedback-based adaptation, broader evaluation, and public presentation.
+After Sprint 4, plan AI-assisted explanations and feedback interpretation, broader evaluation, observability, CI/CD, a simple web interface, deployment, and public presentation.

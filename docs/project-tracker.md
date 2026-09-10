@@ -1,6 +1,6 @@
 # Project Tracker
 
-Last updated: September 9, 2026, Sprint 3 completion
+Last updated: September 10, 2026, Sprint 4 completion
 
 ## Completed
 
@@ -48,6 +48,12 @@ Last updated: September 9, 2026, Sprint 3 completion
 - Integrated profile validation, safety screening, intensity confirmation, seven-day output, rest days, explanations, and weekly totals
 - Verified all 122 project tests inside Docker with Python 3.12 and pytest 9.1.1
 - Reviewed a complete fictional plan and completed the Sprint 3 review and retrospective
+- Added strict Pydantic input and output models for profiles, safety answers, requests, plan days, exercises, totals, and results
+- Added a typed service boundary between the API models and the deterministic weekly-plan generator
+- Added FastAPI health and plan-generation endpoints with automatic OpenAPI documentation
+- Updated Docker to run the API by default while supporting test-command overrides
+- Tested generated, blocked, and invalid API outcomes through Swagger UI
+- Verified all 144 project tests inside Docker with Python 3.12 and pytest 9.1.1
 
 ## Currently Learning
 
@@ -61,10 +67,13 @@ Last updated: September 9, 2026, Sprint 3 completion
 - Comparing pytest's actual and expected results during failure investigation
 - Designing controlled, source-traceable data for deterministic selection
 - Combining small deterministic helpers into one gated planning workflow
+- Defining strict Pydantic data contracts and nested structured outputs
+- Connecting validated application logic to FastAPI endpoints
+- Distinguishing HTTP validation errors from valid blocked business outcomes
 
 ## Current Status
 
-- Sprints 0 through 3 are complete; Sprint 4 planning is next
+- Sprints 0 through 4 are complete; Sprint 5 planning is next
 
 ## Tested
 
@@ -95,6 +104,10 @@ Last updated: September 9, 2026, Sprint 3 completion
 - Generated plans contain seven ordered days and respect availability, experience, equipment, preferences, dislikes, and duration
 - Beginner strength sessions repeat for consistency; returning-user sessions rotate exercises
 - All 122 automated project tests pass inside Docker
+- Pydantic rejects missing, extra, incorrectly typed, duplicate, and conflicting request data
+- FastAPI returns `422` for invalid requests, `200` with `blocked` for valid unsafe requests, and `200` with `generated` for valid safe requests
+- Generated API responses satisfy the nested weekly-plan output contract
+- All 144 automated project tests pass inside Docker
 
 ## Blocked
 
@@ -102,7 +115,7 @@ Last updated: September 9, 2026, Sprint 3 completion
 
 ## Planned
 
-- Plan Sprint 4 Pydantic models, structured outputs, and FastAPI endpoints
+- Plan Sprint 5 AI-assisted explanations and feedback interpretation
 
 ## Explicitly Out of Scope
 
