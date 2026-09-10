@@ -390,3 +390,35 @@ class FeedbackInterpretation(BaseModel):
         if any(not exercise_id.strip() for exercise_id in exercise_ids):
             raise ValueError("Exercise identifiers cannot be blank.")
         return exercise_ids
+
+
+class FeedbackInterpretationRequest(BaseModel):
+    """Free-text workout feedback submitted for structured interpretation."""
+
+    model_config = ConfigDict(strict=True, extra="forbid")
+
+    feedback: str = Field(min_length=1)
+
+    @field_validator("feedback")
+    @classmethod
+    def reject_blank_feedback(cls, feedback):
+        if not feedback.strip():
+            raise ValueError("Feedback cannot be blank.")
+        return feedback
+
+
+class FeedbackInterpretationResponse(BaseModel):
+    """Interpretation result that makes AI failure explicit."""
+
+    model_config = ConfigDict(strict=True, extra="forbid")
+
+    interpretation: FeedbackInterpretation | None
+    interpretation_succeeded: bool
+
+    @model_validator(mode="after")
+    def validate_success_state(self):
+        if self.interpretation_succeeded != (self.interpretation is not None):
+            raise ValueError(
+                "Success must match whether an interpretation is present."
+            )
+        return self

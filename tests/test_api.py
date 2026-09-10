@@ -124,6 +124,33 @@ def test_explanation_endpoint_rejects_blocked_plan(valid_plan_request):
     assert response.status_code == 422
 
 
+def test_feedback_endpoint_returns_no_result_without_configuration(
+    monkeypatch,
+):
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.delenv("OPENAI_MODEL", raising=False)
+
+    response = client.post(
+        "/ai/feedback-interpretations",
+        json={"feedback": "Wednesday felt too difficult."},
+    )
+
+    assert response.status_code == 200
+    assert response.json() == {
+        "interpretation": None,
+        "interpretation_succeeded": False,
+    }
+
+
+def test_feedback_endpoint_rejects_blank_text():
+    response = client.post(
+        "/ai/feedback-interpretations",
+        json={"feedback": "   "},
+    )
+
+    assert response.status_code == 422
+
+
 def test_openapi_schema_documents_all_endpoints():
     response = client.get("/openapi.json")
 
@@ -131,3 +158,4 @@ def test_openapi_schema_documents_all_endpoints():
     assert "/health" in response.json()["paths"]
     assert "/plans" in response.json()["paths"]
     assert "/ai/plan-explanations" in response.json()["paths"]
+    assert "/ai/feedback-interpretations" in response.json()["paths"]
