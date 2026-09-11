@@ -4,7 +4,7 @@ A personalized AI wellness-planning tool that creates and adapts weekly workout 
 
 ## Project Status
 
-Sprints 0 through 7 are complete. Sprint 8 Docker and continuous-integration improvements are implemented and locally verified; the first GitHub Actions run is pending. The project validates fictional profiles, applies safety screening, generates deterministic seven-day workout plans, provides guarded AI-assisted features through FastAPI, measures feedback interpretation, and records privacy-conscious operational traces and metrics.
+Sprints 0 through 8 are complete. The project validates fictional profiles, applies safety screening, generates deterministic seven-day workout plans, provides guarded AI-assisted features through FastAPI, measures feedback interpretation, records privacy-conscious operational metrics, and automatically tests every push and pull request to `main` in GitHub Actions.
 
 The current suite contains 188 passing scenarios covering profile validation, safety screening, exercise-library integrity, scheduling, personalization, prescriptions, structured data contracts, AI failure handling, evaluation, observability, service integration, and API behavior.
 
@@ -84,4 +84,4 @@ Latest verified result: 188 tests passed inside Linux with Python 3.12 and pytes
 
 ## Development Note
 
-The repository is being built in small, tested checkpoints. Continuous integration is configured and awaits its first GitHub-hosted run. Continuous deployment, a web interface, and deployment will be documented only after they are implemented and verified.
+The repository is being built in small, tested checkpoints. Continuous integration is active and verified. Continuous deployment, a web interface, and deployment will be documented only after they are implemented and verified.

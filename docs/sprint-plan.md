@@ -258,7 +258,7 @@ feedback.
 
 ## Sprint 8: Docker and Continuous Integration
 
-**Status:** Implementation complete; first GitHub Actions run pending
+**Status:** Complete
 
 **Goal:** Create separate test and production images, strengthen production
 container behavior, and automatically run the complete test suite on GitHub.
@@ -273,10 +273,15 @@ container behavior, and automatically run the complete test suite on GitHub.
 - GitHub Actions builds the test image and runs all tests for pushes and pull requests to `main`
 - The first GitHub-hosted workflow run passes
 
-**Local review:** The test and production targets build successfully. The
-production container runs as `app:app`, Docker reports it as healthy, and all
-188 tests pass in the temporary test container. GitHub-hosted CI remains to be
-verified after the workflow is pushed.
+**Review:** The test and production targets build successfully. The production
+container runs as `app:app`, Docker reports it as healthy, and all 188 tests
+pass in a temporary local test container. The first GitHub Actions run also
+built the Docker test image and passed the complete suite in 26 seconds.
+
+**Retrospective:** Using the same Docker test target locally and in GitHub
+Actions reduces environment differences. Separating production from testing
+also keeps development tools out of the runtime image, while a non-root user
+and health check provide practical runtime safeguards.
 
 ## Later Planning
 

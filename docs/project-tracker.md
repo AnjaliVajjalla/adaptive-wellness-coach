@@ -1,6 +1,6 @@
 # Project Tracker
 
-Last updated: September 10, 2026, Sprint 8 local verification
+Last updated: September 10, 2026, Sprint 8 completion
 
 ## Completed
 
@@ -84,6 +84,7 @@ Last updated: September 10, 2026, Sprint 8 local verification
 - Added a production health check against the FastAPI `/health` endpoint
 - Added a GitHub Actions workflow that builds the Docker test target and runs the complete suite
 - Locally verified the production container as running and healthy
+- Passed the first GitHub Actions Docker test run in 26 seconds
 
 ## Currently Learning
 
@@ -116,8 +117,8 @@ Last updated: September 10, 2026, Sprint 8 local verification
 
 ## Current Status
 
-- Sprints 0 through 7 are complete
-- Sprint 8 implementation is locally verified; its first GitHub Actions run is pending
+- Sprints 0 through 8 are complete
+- Sprint 9 web-interface work is next
 
 ## Tested
 
@@ -172,7 +173,7 @@ Last updated: September 10, 2026, Sprint 8 local verification
 - The production image excludes pytest and the `/app/tests` directory
 - The production container runs with fixed non-root user and group IDs
 - Docker reports the running production API as healthy
-- The GitHub Actions workflow is defined but has not yet run on GitHub
+- The first GitHub Actions workflow run built the test image and passed all 188 tests
 
 ## Blocked
 
@@ -180,7 +181,7 @@ Last updated: September 10, 2026, Sprint 8 local verification
 
 ## Planned
 
-- Push Sprint 8 and verify the first GitHub Actions CI run
+- Build the user intake and weekly-plan web interface in Sprint 9
 
 ## Explicitly Out of Scope
 
