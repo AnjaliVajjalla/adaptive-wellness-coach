@@ -4,7 +4,7 @@ A personalized AI wellness-planning tool that creates and adapts weekly workout 
 
 ## Project Status
 
-Sprints 0 through 7 are complete. The project validates fictional profiles, applies safety screening, generates deterministic seven-day workout plans, provides guarded AI-assisted features through FastAPI, measures feedback interpretation, and records privacy-conscious operational traces and metrics.
+Sprints 0 through 7 are complete. Sprint 8 Docker and continuous-integration improvements are implemented and locally verified; the first GitHub Actions run is pending. The project validates fictional profiles, applies safety screening, generates deterministic seven-day workout plans, provides guarded AI-assisted features through FastAPI, measures feedback interpretation, and records privacy-conscious operational traces and metrics.
 
 The current suite contains 188 passing scenarios covering profile validation, safety screening, exercise-library integrity, scheduling, personalization, prescriptions, structured data contracts, AI failure handling, evaluation, observability, service integration, and API behavior.
 
@@ -41,6 +41,9 @@ See [Safety Boundaries](docs/safety-boundaries.md) and the [Safety-Screening Spe
 - Sprint 5: AI-assisted explanations and feedback interpretation
 - Sprint 6: Synthetic evaluation dataset, deterministic grading, and measured baseline
 - Sprint 7: AI tracing, reliability metrics, latency, token usage, and estimated cost
+- Sprint 8: Multi-stage Docker images, runtime safeguards, and automated GitHub Actions testing
+- Sprint 9: User intake and weekly-plan web interface
+- Sprint 10: Deployment and portfolio presentation
 
 See [Sprint Plan](docs/sprint-plan.md) for acceptance criteria.
 
@@ -58,7 +61,8 @@ Open `http://127.0.0.1:8000/docs` to use the interactive API documentation.
 Run the test suite with:
 
 ```bash
-docker run --rm adaptive-wellness-coach:api python -m pytest
+docker build --target test -t adaptive-wellness-coach:test .
+docker run --rm adaptive-wellness-coach:test
 ```
 
 Latest verified result: 188 tests passed inside Linux with Python 3.12 and pytest 9.1.1.
@@ -80,4 +84,4 @@ Latest verified result: 188 tests passed inside Linux with Python 3.12 and pytes
 
 ## Development Note
 
-The repository is being built in small, tested checkpoints. CI/CD, a web interface, and deployment will be documented as implemented only after they are verified.
+The repository is being built in small, tested checkpoints. Continuous integration is configured and awaits its first GitHub-hosted run. Continuous deployment, a web interface, and deployment will be documented only after they are implemented and verified.

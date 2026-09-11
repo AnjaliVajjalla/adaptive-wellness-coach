@@ -24,6 +24,7 @@ This file records major product, safety, and technical decisions. Git history re
 | D-018 | Limit OpenAI to plan explanations and feedback extraction, then validate its structured output with Pydantic and deterministic business rules before use. | Language understanding adds value here, while planning, calculations, safety, and final authorization require predictable behavior and safe fallbacks. | Approved |
 | D-019 | Use a local JSONL evaluation dataset, deterministic grading, and saved result reports for AI-quality measurement. | This keeps evaluations reproducible, portable, reviewable, and independent of a retiring hosted evaluation platform. | Approved |
 | D-020 | Record privacy-conscious AI request traces and summarize reliability, latency, token usage, and configurable estimated cost alongside evaluation quality. | This makes AI behavior diagnosable without logging secrets or raw feedback and prevents accuracy from being evaluated without operational performance. | Approved |
+| D-021 | Use separate Docker test and production stages, run production as a non-root user with a health check, and run the Docker test stage through GitHub Actions. | This keeps development tools out of the runtime image while making local and hosted testing reproducible and production behavior easier to monitor. | Approved |
 
 ## How to Update This Log
 

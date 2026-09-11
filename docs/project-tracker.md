@@ -1,6 +1,6 @@
 # Project Tracker
 
-Last updated: September 10, 2026, Sprint 7 completion
+Last updated: September 10, 2026, Sprint 8 local verification
 
 ## Completed
 
@@ -78,6 +78,12 @@ Last updated: September 10, 2026, Sprint 7 completion
 - Integrated operational metrics into the feedback evaluation report
 - Verified one live fictional request at 5.13 seconds, 514 tokens, and an estimated cost of $0.000503
 - Verified all 188 project tests inside Docker with Python 3.12 and pytest 9.1.1
+- Split the Dockerfile into shared, test, and production build stages
+- Kept pytest, tests, and evaluation files out of the production image
+- Configured the production container to run as the non-root `app` user
+- Added a production health check against the FastAPI `/health` endpoint
+- Added a GitHub Actions workflow that builds the Docker test target and runs the complete suite
+- Locally verified the production container as running and healthy
 
 ## Currently Learning
 
@@ -104,10 +110,14 @@ Last updated: September 10, 2026, Sprint 7 completion
 - Distinguishing individual request traces from aggregate operational metrics
 - Measuring average and P95 latency, token usage, and estimated API cost
 - Designing logs that support debugging without storing secrets or raw feedback
+- Separating test and production concerns with multi-stage Docker builds
+- Distinguishing a running process from a healthy application
+- Automating reproducible Docker tests with GitHub Actions continuous integration
 
 ## Current Status
 
-- Sprints 0 through 7 are complete; Sprint 8 CI/CD work is next
+- Sprints 0 through 7 are complete
+- Sprint 8 implementation is locally verified; its first GitHub Actions run is pending
 
 ## Tested
 
@@ -159,6 +169,10 @@ Last updated: September 10, 2026, Sprint 7 completion
 - Synthetic trace aggregation reports reliability, average and P95 latency, tokens, and cost
 - The evaluation runner combines quality and operational summaries
 - All 188 automated project tests pass inside Docker
+- The production image excludes pytest and the `/app/tests` directory
+- The production container runs with fixed non-root user and group IDs
+- Docker reports the running production API as healthy
+- The GitHub Actions workflow is defined but has not yet run on GitHub
 
 ## Blocked
 
@@ -166,7 +180,7 @@ Last updated: September 10, 2026, Sprint 7 completion
 
 ## Planned
 
-- Strengthen Docker and add CI/CD automation in Sprint 8
+- Push Sprint 8 and verify the first GitHub Actions CI run
 
 ## Explicitly Out of Scope
 

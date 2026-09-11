@@ -256,7 +256,29 @@ Keeping pricing configurable avoids presenting stale estimates as billing
 facts, and privacy-conscious traces support debugging without storing raw
 feedback.
 
+## Sprint 8: Docker and Continuous Integration
+
+**Status:** Implementation complete; first GitHub Actions run pending
+
+**Goal:** Create separate test and production images, strengthen production
+container behavior, and automatically run the complete test suite on GitHub.
+
+**Acceptance criteria:**
+
+- A shared Docker base supports separate test and production targets
+- The test image contains pytest, tests, and evaluation files
+- The production image excludes test-only files and dependencies
+- The production application runs as a non-root user
+- Docker checks whether the running API responds through its health endpoint
+- GitHub Actions builds the test image and runs all tests for pushes and pull requests to `main`
+- The first GitHub-hosted workflow run passes
+
+**Local review:** The test and production targets build successfully. The
+production container runs as `app:app`, Docker reports it as healthy, and all
+188 tests pass in the temporary test container. GitHub-hosted CI remains to be
+verified after the workflow is pushed.
+
 ## Later Planning
 
-After Sprint 7, add CI/CD, a simple web interface, deployment, and public
+After Sprint 8, add a simple web interface, deployment, and public
 presentation.
