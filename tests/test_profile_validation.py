@@ -15,6 +15,7 @@ def complete_profile():
         "current_activity_level": "Light",
         "available_workout_days": ["Monday", "Wednesday", "Friday"],
         "session_duration": 30,
+        "workout_split_preference": "Let the coach choose",
         "available_equipment": ["Exercise mat", "Dumbbells"],
         "preferred_activities": [
             "Strength training",
@@ -86,6 +87,7 @@ def test_empty_required_field_is_reported(complete_profile, empty_value):
         ("experience_level", "Advanced athlete"),
         ("current_activity_level", "Very active"),
         ("session_duration", 20),
+        ("workout_split_preference", "Bro split"),
         ("preferred_intensity", "Extreme"),
     ],
 )

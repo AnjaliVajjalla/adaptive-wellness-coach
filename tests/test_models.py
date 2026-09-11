@@ -17,6 +17,7 @@ def valid_profile_data():
         "current_activity_level": "Light",
         "available_workout_days": ["Monday", "Wednesday", "Friday"],
         "session_duration": 30,
+        "workout_split_preference": "Let the coach choose",
         "available_equipment": ["No equipment, bodyweight only"],
         "preferred_activities": ["Bodyweight workouts"],
         "disliked_activities": ["Jogging or running"],
@@ -51,6 +52,13 @@ def test_strict_model_rejects_text_instead_of_integer(valid_profile_data):
 
 def test_unsupported_allowed_value_is_rejected(valid_profile_data):
     valid_profile_data["experience_level"] = "Advanced"
+
+    with pytest.raises(ValidationError):
+        UserProfile.model_validate(valid_profile_data)
+
+
+def test_unsupported_workout_split_is_rejected(valid_profile_data):
+    valid_profile_data["workout_split_preference"] = "Body-part split"
 
     with pytest.raises(ValidationError):
         UserProfile.model_validate(valid_profile_data)

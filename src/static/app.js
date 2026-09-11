@@ -68,6 +68,7 @@ function buildPlanRequest() {
       current_activity_level: form.elements.current_activity_level.value,
       available_workout_days: selectedValues("available_workout_days"),
       session_duration: Number(form.elements.session_duration.value),
+      workout_split_preference: form.elements.workout_split_preference.value,
       available_equipment: selectedValues("available_equipment"),
       preferred_activities: selectedValues("preferred_activities"),
       disliked_activities: selectedValues("disliked_activities"),
@@ -132,6 +133,7 @@ function renderReview() {
     ["Experience", profile.experience_level],
     ["Activity level", profile.current_activity_level],
     ["Session duration", `${profile.session_duration} minutes`],
+    ["Workout structure", profile.workout_split_preference],
     ["Available days", profile.available_workout_days.join(", ")],
   ]);
   addReviewSection(summary, "Activities and equipment", [
@@ -197,6 +199,12 @@ function renderGeneratedPlan(result) {
   const summary = createTextElement("p", result.weekly_summary, "result-summary");
   const totals = document.createElement("div");
   const days = document.createElement("div");
+  const warnings = document.createElement("div");
+
+  warnings.className = "result-warnings";
+  result.warnings.forEach((warning) => {
+    warnings.append(createTextElement("p", warning));
+  });
 
   totals.className = "totals-grid";
   [
@@ -253,7 +261,11 @@ function renderGeneratedPlan(result) {
     days.append(card);
   });
 
-  resultContent.replaceChildren(heading, summary, totals, days);
+  resultContent.replaceChildren(heading, summary);
+  if (result.warnings.length) {
+    resultContent.append(warnings);
+  }
+  resultContent.append(totals, days);
   planResult.hidden = false;
   heading.focus();
   planResult.scrollIntoView({ behavior: "smooth", block: "start" });

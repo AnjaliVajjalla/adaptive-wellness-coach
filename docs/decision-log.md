@@ -26,6 +26,7 @@ This file records major product, safety, and technical decisions. Git history re
 | D-020 | Record privacy-conscious AI request traces and summarize reliability, latency, token usage, and configurable estimated cost alongside evaluation quality. | This makes AI behavior diagnosable without logging secrets or raw feedback and prevents accuracy from being evaluated without operational performance. | Approved |
 | D-021 | Use separate Docker test and production stages, run production as a non-root user with a health check, and run the Docker test stage through GitHub Actions. | This keeps development tools out of the runtime image while making local and hosted testing reproducible and production behavior easier to monitor. | Approved |
 | D-022 | Build the first web interface with responsive HTML, CSS, and vanilla JavaScript served by FastAPI, while keeping validation and plan generation authoritative on the backend. | This adds a usable portfolio interface without introducing an unnecessary frontend framework or duplicating core business logic in the browser. | Approved |
+| D-023 | Let users choose coach-selected, full-body, upper/lower, or push/pull/legs strength structures, with an explicit full-body fallback warning when the weekly mix has too few strength days. | This makes a major plan-design choice visible and user-controlled while preserving goal-based frequency and recovery rules. | Approved |
 
 ## How to Update This Log
 

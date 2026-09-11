@@ -15,6 +15,7 @@ This specification defines the fictional profile information used to build and t
 | Current activity level | User | Yes | Select one approved activity level |
 | Available workout days | User | Yes | Select one or more unique weekdays |
 | Session duration | User | Yes | Select one approved duration |
+| Workout structure | User | Yes | Select one approved strength-training structure |
 | Available equipment | User | Yes | Select one or more approved equipment options |
 | Preferred activities | User | Yes | Select one or more approved preference options |
 | Disliked activities | User | Yes | Select one or more approved dislike options |
@@ -58,6 +59,18 @@ This specification defines the fictional profile information used to build and t
 - 30 minutes
 - 45 minutes
 - 60 minutes
+
+### Workout Structure
+
+- Let the coach choose
+- Full body
+- Upper/lower
+- Push/pull/legs
+
+The structure applies to strength days. Upper/lower requires at least two
+strength days, while push/pull/legs requires at least three. When the weekly
+mix does not contain enough strength days, the generator uses full-body
+strength and returns a visible warning.
 
 ### Available Equipment
 
@@ -109,6 +122,7 @@ Preferred activities may also use `No preference`. Disliked activities may also 
 | Current activity level | Light |
 | Available workout days | Monday, Wednesday, Friday |
 | Session duration | 30 minutes |
+| Workout structure | Upper/lower |
 | Available equipment | Exercise mat, dumbbells |
 | Preferred activities | Strength training, bodyweight workouts |
 | Disliked activities | Jogging or running |

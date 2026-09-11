@@ -51,6 +51,13 @@ ACTIVITY_OPTIONS = {
 
 INTENSITY_OPTIONS = {"Gentle", "Moderate", "Challenging", "No preference"}
 
+WORKOUT_SPLIT_OPTIONS = {
+    "Let the coach choose",
+    "Full body",
+    "Upper/lower",
+    "Push/pull/legs",
+}
+
 REQUIRED_FIELDS = [
     "profile_id",
     "primary_goal",
@@ -58,6 +65,7 @@ REQUIRED_FIELDS = [
     "current_activity_level",
     "available_workout_days",
     "session_duration",
+    "workout_split_preference",
     "available_equipment",
     "preferred_activities",
     "disliked_activities",
@@ -156,6 +164,12 @@ def validate_profile(profile):
     )
     _validate_single_choice(
         profile, "preferred_intensity", INTENSITY_OPTIONS, errors
+    )
+    _validate_single_choice(
+        profile,
+        "workout_split_preference",
+        WORKOUT_SPLIT_OPTIONS,
+        errors,
     )
 
     _validate_multi_choice(

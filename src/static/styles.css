@@ -200,6 +200,12 @@ h1 {
   font-weight: 700;
 }
 
+.field small {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
 select {
   width: 100%;
   min-height: 48px;
@@ -305,6 +311,19 @@ input:focus-visible + span {
   border-radius: 8px;
   background: #fff8e8;
   color: #644c1d;
+}
+
+.result-warnings {
+  margin: 18px 0;
+  padding: 14px 16px;
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  color: #644c1d;
+  background: #fff8e8;
+}
+
+.result-warnings p:last-child {
+  margin-bottom: 0;
 }
 
 .safety-question {

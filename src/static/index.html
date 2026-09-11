@@ -8,8 +8,8 @@
       content="Create a personalized, safety-screened weekly workout plan."
     >
     <title>Adaptive Wellness Coach</title>
-    <link rel="stylesheet" href="/static/styles.css">
-    <script src="/static/app.js" defer></script>
+    <link rel="stylesheet" href="/static/styles.css?v=2">
+    <script src="/static/app.js?v=2" defer></script>
   </head>
   <body>
     <header class="site-header">
@@ -95,6 +95,18 @@
                   <option value="45">45 minutes</option>
                   <option value="60">60 minutes</option>
                 </select>
+              </label>
+
+              <label class="field">
+                <span>Workout structure</span>
+                <select name="workout_split_preference" required>
+                  <option value="">Select one</option>
+                  <option>Let the coach choose</option>
+                  <option>Full body</option>
+                  <option>Upper/lower</option>
+                  <option>Push/pull/legs</option>
+                </select>
+                <small>Applies to strength days. Some splits require multiple strength days.</small>
               </label>
             </div>
 

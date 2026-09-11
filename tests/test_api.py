@@ -24,6 +24,7 @@ def valid_plan_request():
                 "Friday",
             ],
             "session_duration": 30,
+            "workout_split_preference": "Let the coach choose",
             "available_equipment": ["No equipment, bodyweight only"],
             "preferred_activities": ["Bodyweight workouts"],
             "disliked_activities": ["Jogging or running"],

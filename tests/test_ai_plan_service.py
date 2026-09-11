@@ -25,6 +25,7 @@ def fictional_plan():
         "current_activity_level": "Light",
         "available_workout_days": ["Monday", "Wednesday", "Friday"],
         "session_duration": 30,
+        "workout_split_preference": "Let the coach choose",
         "available_equipment": ["No equipment, bodyweight only"],
         "preferred_activities": ["Bodyweight workouts"],
         "disliked_activities": ["Jogging or running"],

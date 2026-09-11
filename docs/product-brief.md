@@ -23,6 +23,7 @@ The first version will collect a structured user profile, validate required info
 - Current activity level
 - Available workout days
 - Time available per session
+- Preferred workout structure
 - Available equipment
 - Preferred activities
 - Disliked activities
@@ -62,5 +63,5 @@ The first version succeeds when it can safely create and explain a realistic wee
 - Exercise-form analysis
 - Real-time coaching
 - Multiple AI agents
-- Mobile or web interfaces
+- Native mobile applications
 - User accounts, payments, and social features

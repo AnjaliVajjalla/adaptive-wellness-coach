@@ -5,6 +5,7 @@ import pytest
 from src.exercise_library import EXERCISE_LIBRARY
 from src.weekly_plan_generator import (
     add_exercise_prescriptions,
+    apply_workout_split,
     filter_eligible_exercises,
     generate_weekly_plan,
     rank_exercises_by_preference,
@@ -35,6 +36,7 @@ def complete_planning_profile(planning_profile):
         "current_activity_level": "Light",
         "available_workout_days": ["Monday", "Wednesday", "Friday"],
         "session_duration": 30,
+        "workout_split_preference": "Let the coach choose",
         "preferred_intensity": "Moderate",
         **planning_profile,
     }
@@ -164,6 +166,46 @@ def test_fewer_available_days_keep_the_highest_priority_focuses():
     )
 
     assert selected_focuses == ("cardio", "cardio")
+
+
+def test_upper_lower_preference_splits_two_strength_days():
+    focuses, warnings = apply_workout_split(
+        ("full_body_strength", "full_body_strength", "cardio", "mobility"),
+        "Upper/lower",
+    )
+
+    assert focuses == (
+        "upper_body_strength",
+        "lower_body_strength",
+        "cardio",
+        "mobility",
+    )
+    assert warnings == []
+
+
+def test_push_pull_legs_preference_splits_three_strength_days():
+    focuses, warnings = apply_workout_split(
+        ("strength", "strength", "strength", "cardio"),
+        "Push/pull/legs",
+    )
+
+    assert focuses == (
+        "push_strength",
+        "pull_strength",
+        "legs_strength",
+        "cardio",
+    )
+    assert warnings == []
+
+
+def test_incompatible_split_uses_full_body_and_returns_warning():
+    focuses, warnings = apply_workout_split(
+        ("strength", "cardio", "mobility"),
+        "Upper/lower",
+    )
+
+    assert focuses == ("full_body_strength", "cardio", "mobility")
+    assert "requires at least 2 strength days" in warnings[0]
 
 
 def test_no_equipment_profile_excludes_equipment_exercises(planning_profile):
@@ -617,6 +659,80 @@ def test_generated_plan_reports_calculated_weekly_totals(
         "cardio_sessions": 1,
         "mobility_sessions": 0,
     }
+
+
+def test_generated_plan_honors_upper_lower_preference(
+    complete_planning_profile,
+    safe_answers,
+):
+    complete_planning_profile.update(
+        {
+            "primary_goal": "Improve overall fitness",
+            "experience_level": "Returning to exercise",
+            "available_workout_days": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday",
+            ],
+            "available_equipment": ["Full gym access"],
+            "disliked_activities": ["No disliked activities"],
+            "workout_split_preference": "Upper/lower",
+        }
+    )
+
+    result = generate_weekly_plan(complete_planning_profile, safe_answers)
+    workout_focuses = [
+        day["focus"] for day in result["days"] if day["day_type"] == "workout"
+    ]
+
+    assert result["status"] == "generated"
+    assert workout_focuses == [
+        "upper_body_strength",
+        "lower_body_strength",
+        "cardio",
+        "mobility",
+    ]
+    assert result["warnings"] == []
+
+
+def test_generated_plan_honors_push_pull_legs_preference(
+    complete_planning_profile,
+    safe_answers,
+):
+    complete_planning_profile.update(
+        {
+            "experience_level": "Returning to exercise",
+            "available_workout_days": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday",
+            ],
+            "available_equipment": ["Full gym access"],
+            "disliked_activities": ["No disliked activities"],
+            "workout_split_preference": "Push/pull/legs",
+        }
+    )
+
+    result = generate_weekly_plan(complete_planning_profile, safe_answers)
+    workout_focuses = [
+        day["focus"] for day in result["days"] if day["day_type"] == "workout"
+    ]
+
+    assert result["status"] == "generated"
+    assert workout_focuses[:3] == [
+        "push_strength",
+        "pull_strength",
+        "legs_strength",
+    ]
+    assert result["warnings"] == []
 
 
 def test_workout_entries_include_timing_exercises_and_explanations(

@@ -57,11 +57,22 @@ PreferredIntensity = Literal[
     "Challenging",
     "No preference",
 ]
+WorkoutSplitPreference = Literal[
+    "Let the coach choose",
+    "Full body",
+    "Upper/lower",
+    "Push/pull/legs",
+]
 PlanStatus = Literal["generated", "confirmation_required", "blocked"]
 DayType = Literal["workout", "recovery", "rest"]
 SessionFocus = Literal[
     "strength",
     "full_body_strength",
+    "upper_body_strength",
+    "lower_body_strength",
+    "push_strength",
+    "pull_strength",
+    "legs_strength",
     "cardio",
     "mobility",
     "recovery",
@@ -95,6 +106,7 @@ class UserProfile(BaseModel):
     current_activity_level: ActivityLevel
     available_workout_days: list[Weekday] = Field(min_length=1)
     session_duration: SessionDuration
+    workout_split_preference: WorkoutSplitPreference
     available_equipment: list[Equipment] = Field(min_length=1)
     preferred_activities: list[ActivityPreference] = Field(min_length=1)
     disliked_activities: list[DislikedActivity] = Field(min_length=1)

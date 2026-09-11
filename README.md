@@ -6,7 +6,7 @@ A personalized AI wellness-planning tool that creates and adapts weekly workout 
 
 Sprints 0 through 9 are complete locally. The project validates fictional profiles, applies safety screening, generates deterministic seven-day workout plans, provides guarded AI-assisted features through FastAPI, measures feedback interpretation, records privacy-conscious operational metrics, and includes a responsive web interface for profile intake, safety screening, review, and plan display.
 
-The current suite contains 190 passing scenarios covering profile validation, safety screening, exercise-library integrity, scheduling, personalization, prescriptions, structured data contracts, AI failure handling, evaluation, observability, service integration, API behavior, and static-interface delivery.
+The current suite contains 198 passing scenarios covering profile validation, safety screening, exercise-library integrity, scheduling, workout-structure selection, personalization, prescriptions, structured data contracts, AI failure handling, evaluation, observability, service integration, API behavior, and static-interface delivery.
 
 ## Product Overview
 
@@ -21,6 +21,7 @@ The first version focuses on workout planning. Meal ideas, calorie estimates, an
 - Safety screening and appropriate refusals
 - Beginner and returning-user planning modes
 - Seven-day workout-plan generation
+- User-selected full-body, upper/lower, or push/pull/legs strength structure
 - Clear explanations for recommendations
 - Feedback-based plan adjustments
 - Synthetic testing and documented evaluation
@@ -66,7 +67,7 @@ docker build --target test -t adaptive-wellness-coach:test .
 docker run --rm adaptive-wellness-coach:test
 ```
 
-Latest verified result: 190 tests passed inside Linux with Python 3.12 and pytest 9.1.1.
+Latest verified result: 198 tests passed inside Linux with Python 3.12 and pytest 9.1.1.
 
 ## Documentation
 

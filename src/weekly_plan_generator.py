@@ -104,6 +104,24 @@ GOAL_SESSION_MIXES = {
     },
 }
 
+STRENGTH_FOCUSES = {
+    "strength",
+    "full_body_strength",
+    "upper_body_strength",
+    "lower_body_strength",
+    "push_strength",
+    "pull_strength",
+    "legs_strength",
+}
+
+FOCUS_MOVEMENT_PATTERNS = {
+    "upper_body_strength": {"upper_push", "upper_pull", "core"},
+    "lower_body_strength": {"squat", "hinge", "lower_body", "core"},
+    "push_strength": {"upper_push"},
+    "pull_strength": {"upper_pull"},
+    "legs_strength": {"squat", "hinge", "lower_body"},
+}
+
 
 def _schedule_score(day_indexes):
     """Return a score that favors recovery spacing and even gaps."""
@@ -150,6 +168,49 @@ def select_session_focuses(primary_goal, experience_level, workout_count):
     """Return the highest-priority session focuses for the selected days."""
     approved_mix = GOAL_SESSION_MIXES[primary_goal][experience_level]
     return approved_mix[:workout_count]
+
+
+def apply_workout_split(session_focuses, workout_split_preference):
+    """Apply a requested strength split and return any fallback warning."""
+    focuses = list(session_focuses)
+    strength_indexes = [
+        index
+        for index, focus in enumerate(focuses)
+        if focus in STRENGTH_FOCUSES
+    ]
+
+    if workout_split_preference == "Let the coach choose":
+        return tuple(focuses), []
+
+    if workout_split_preference == "Full body":
+        split_focuses = ("full_body_strength",)
+        required_strength_days = 1
+    elif workout_split_preference == "Upper/lower":
+        split_focuses = ("upper_body_strength", "lower_body_strength")
+        required_strength_days = 2
+    else:
+        split_focuses = (
+            "push_strength",
+            "pull_strength",
+            "legs_strength",
+        )
+        required_strength_days = 3
+
+    if len(strength_indexes) < required_strength_days:
+        for index in strength_indexes:
+            focuses[index] = "full_body_strength"
+        return tuple(focuses), [
+            f"{workout_split_preference} requires at least "
+            f"{required_strength_days} strength days. Full-body strength was "
+            "used for this weekly mix instead."
+        ]
+
+    for split_index, focus_index in enumerate(strength_indexes):
+        focuses[focus_index] = split_focuses[
+            split_index % len(split_focuses)
+        ]
+
+    return tuple(focuses), []
 
 
 def resolve_flexible_focus(profile, eligible_exercises):
@@ -271,8 +332,7 @@ def select_session_exercises(
     selection_offset=0,
 ):
     """Select preferred, focus-matched exercises with movement variety."""
-    strength_focuses = {"strength", "full_body_strength"}
-    if session_focus in strength_focuses:
+    if session_focus in STRENGTH_FOCUSES:
         accepted_types = {"strength", "bodyweight"}
     else:
         accepted_types = {session_focus}
@@ -281,6 +341,11 @@ def select_session_exercises(
         exercise
         for exercise in eligible_exercises
         if exercise["activity_type"] in accepted_types
+        and (
+            session_focus not in FOCUS_MOVEMENT_PATTERNS
+            or exercise["movement_pattern"]
+            in FOCUS_MOVEMENT_PATTERNS[session_focus]
+        )
     )
     ranked_exercises = rank_exercises_by_preference(
         profile,
@@ -291,7 +356,7 @@ def select_session_exercises(
         ranked_exercises = (
             ranked_exercises[offset:] + ranked_exercises[:offset]
         )
-    if session_focus in strength_focuses:
+    if session_focus in STRENGTH_FOCUSES:
         exercise_limit = SESSION_EXERCISE_COUNTS[session_duration]
     elif session_focus == "cardio":
         exercise_limit = 1
@@ -331,7 +396,7 @@ def add_exercise_prescriptions(
         return ()
 
     prescribed_exercises = []
-    if session_focus in {"strength", "full_body_strength"}:
+    if session_focus in STRENGTH_FOCUSES:
         sets = (
             2
             if profile["experience_level"] == "Complete beginner"
@@ -385,6 +450,23 @@ def _workout_explanation(focus):
         "strength": "Builds strength using eligible, balanced movements.",
         "full_body_strength": (
             "Builds full-body strength with varied movement patterns."
+        ),
+        "upper_body_strength": (
+            "Organizes this strength day around upper-body pushing, pulling, "
+            "and core movements."
+        ),
+        "lower_body_strength": (
+            "Organizes this strength day around lower-body and core movements."
+        ),
+        "push_strength": (
+            "Organizes this strength day around upper-body pushing movements."
+        ),
+        "pull_strength": (
+            "Organizes this strength day around upper-body pulling movements."
+        ),
+        "legs_strength": (
+            "Organizes this strength day around squat, hinge, and lower-body "
+            "movements."
         ),
         "cardio": "Supports stamina with an eligible cardio activity.",
         "mobility": "Supports mobility using eligible gentle movement.",
@@ -478,6 +560,11 @@ def generate_weekly_plan(
             ["exercise_availability"],
         )
 
+    resolved_focuses, split_warnings = apply_workout_split(
+        resolved_focuses,
+        profile["workout_split_preference"],
+    )
+
     workout_by_day = dict(zip(selected_days, resolved_focuses))
     days = []
     strength_session_index = 0
@@ -502,7 +589,7 @@ def generate_weekly_plan(
         focus = workout_by_day[day]
         selection_offset = 0
         if (
-            focus in {"strength", "full_body_strength"}
+            focus in STRENGTH_FOCUSES
             and profile["experience_level"] == "Returning to exercise"
         ):
             selection_offset = strength_session_index
@@ -571,7 +658,7 @@ def generate_weekly_plan(
             len(selected_days) * profile["session_duration"]
         ),
         "strength_sessions": sum(
-            focus in {"strength", "full_body_strength"}
+            focus in STRENGTH_FOCUSES
             for focus in resolved_focuses
         ),
         "cardio_sessions": resolved_focuses.count("cardio"),
@@ -585,7 +672,7 @@ def generate_weekly_plan(
             f"{profile['primary_goal'].lower()}, scheduled around the "
             "profile's availability and recovery time."
         ),
-        "warnings": [],
+        "warnings": split_warnings,
         "days": days,
         "totals": totals,
         "reasons": [],

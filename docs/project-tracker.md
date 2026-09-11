@@ -1,6 +1,6 @@
 # Project Tracker
 
-Last updated: September 11, 2026, Sprint 9 local completion
+Last updated: September 11, 2026, post-Sprint 9 plan-structure refinement
 
 ## Completed
 
@@ -93,6 +93,9 @@ Last updated: September 11, 2026, Sprint 9 local completion
 - Served the interface and static assets from FastAPI inside the production Docker image
 - Verified generated, blocked, conflicting-selection, and confirmation-required browser paths
 - Verified all 190 project tests inside Docker with Python 3.12 and pytest 9.1.1
+- Added an explicit workout-structure preference for coach-selected, full-body, upper/lower, and push/pull/legs plans
+- Added deterministic split selection, movement-pattern filtering, and visible fallback warnings
+- Verified all 198 project tests inside Docker with Python 3.12 and pytest 9.1.1
 
 ## Currently Learning
 
@@ -130,7 +133,8 @@ Last updated: September 11, 2026, Sprint 9 local completion
 ## Current Status
 
 - Sprints 0 through 9 are complete locally
-- Sprint 9 is ready for commit, push, and GitHub Actions verification
+- Sprint 9 is committed, pushed, and verified through GitHub Actions
+- The workout-structure refinement is locally complete and ready for CI verification
 - Sprint 10 deployment and portfolio presentation are next
 
 ## Tested
@@ -193,6 +197,9 @@ Last updated: September 11, 2026, Sprint 9 local completion
 - An unsafe safety answer returns a blocked result with no workout-day cards
 - A challenging selection for a beginner or sedentary profile requires explicit confirmation
 - All 190 automated project tests pass inside Docker
+- Requested upper/lower and push/pull/legs structures produce distinct strength-day focuses
+- Incompatible split requests fall back to full-body strength with a visible warning
+- All 198 automated project tests pass inside Docker
 
 ## Blocked
 
@@ -200,7 +207,6 @@ Last updated: September 11, 2026, Sprint 9 local completion
 
 ## Planned
 
-- Commit, push, and verify Sprint 9 through GitHub Actions
 - Deploy the application and finish the portfolio presentation in Sprint 10
 
 ## Explicitly Out of Scope

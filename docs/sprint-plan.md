@@ -285,7 +285,7 @@ and health check provide practical runtime safeguards.
 
 ## Sprint 9: User Intake and Weekly-Plan Web Interface
 
-**Status:** Complete locally
+**Status:** Complete and verified
 
 **Goal:** Let a user enter a fictional profile, complete safety screening,
 review the answers, and view the generated seven-day plan in a responsive web
@@ -310,6 +310,11 @@ challenging-intensity confirmation. All 190 project tests pass in Docker.
 allowed the existing FastAPI, Pydantic, safety, and deterministic planning
 layers to remain the source of truth. Client-side checks improve usability,
 while backend validation still protects the application boundary.
+
+**Post-sprint refinement:** Added a required workout-structure choice so users
+can request full body, upper/lower, or push/pull/legs rather than having the
+goal-based mix silently choose full body. Incompatible requests use an
+explicit full-body fallback warning. All 198 tests pass in Docker.
 
 ## Later Planning
 

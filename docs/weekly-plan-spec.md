@@ -106,6 +106,12 @@ on every selected day.
 ## Personalization Rules
 
 - The primary goal determines the main weekly workout mix.
+- The workout-structure preference determines how strength days are organized:
+  coach-selected, full body, upper/lower, or push/pull/legs.
+- Upper/lower requires at least two strength days and push/pull/legs requires
+  at least three. If the goal-based mix has fewer strength days, the generator
+  uses full-body strength and returns a warning instead of silently ignoring
+  the preference.
 - Additional goals make smaller adjustments without replacing the primary
   goal.
 - Preferred activities are prioritized.
