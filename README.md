@@ -4,15 +4,15 @@ A personalized AI wellness-planning tool that creates and adapts weekly workout 
 
 ## Project Status
 
-Sprints 0 through 8 are complete. The project validates fictional profiles, applies safety screening, generates deterministic seven-day workout plans, provides guarded AI-assisted features through FastAPI, measures feedback interpretation, records privacy-conscious operational metrics, and automatically tests every push and pull request to `main` in GitHub Actions.
+Sprints 0 through 9 are complete locally. The project validates fictional profiles, applies safety screening, generates deterministic seven-day workout plans, provides guarded AI-assisted features through FastAPI, measures feedback interpretation, records privacy-conscious operational metrics, and includes a responsive web interface for profile intake, safety screening, review, and plan display.
 
-The current suite contains 188 passing scenarios covering profile validation, safety screening, exercise-library integrity, scheduling, personalization, prescriptions, structured data contracts, AI failure handling, evaluation, observability, service integration, and API behavior.
+The current suite contains 190 passing scenarios covering profile validation, safety screening, exercise-library integrity, scheduling, personalization, prescriptions, structured data contracts, AI failure handling, evaluation, observability, service integration, API behavior, and static-interface delivery.
 
 ## Product Overview
 
 The Adaptive Wellness Coach is intended for generally healthy people who are complete beginners or returning to exercise. It will create realistic weekly workout plans based on goals, experience, availability, equipment, and preferences.
 
-The first version will focus on workout planning. Meal ideas, calorie estimates, wearable integrations, and a web interface are outside the initial scope.
+The first version focuses on workout planning. Meal ideas, calorie estimates, and wearable integrations remain outside the current scope.
 
 ## Planned Core Features
 
@@ -42,7 +42,7 @@ See [Safety Boundaries](docs/safety-boundaries.md) and the [Safety-Screening Spe
 - Sprint 6: Synthetic evaluation dataset, deterministic grading, and measured baseline
 - Sprint 7: AI tracing, reliability metrics, latency, token usage, and estimated cost
 - Sprint 8: Multi-stage Docker images, runtime safeguards, and automated GitHub Actions testing
-- Sprint 9: User intake and weekly-plan web interface
+- Sprint 9: Responsive user intake, safety, review, and weekly-plan web interface
 - Sprint 10: Deployment and portfolio presentation
 
 See [Sprint Plan](docs/sprint-plan.md) for acceptance criteria.
@@ -56,7 +56,8 @@ docker build -t adaptive-wellness-coach:api .
 docker run --rm -p 8000:8000 --env-file .env adaptive-wellness-coach:api
 ```
 
-Open `http://127.0.0.1:8000/docs` to use the interactive API documentation.
+Open `http://127.0.0.1:8000` to use the web application, or open
+`http://127.0.0.1:8000/docs` to use the interactive API documentation.
 
 Run the test suite with:
 
@@ -65,7 +66,7 @@ docker build --target test -t adaptive-wellness-coach:test .
 docker run --rm adaptive-wellness-coach:test
 ```
 
-Latest verified result: 188 tests passed inside Linux with Python 3.12 and pytest 9.1.1.
+Latest verified result: 190 tests passed inside Linux with Python 3.12 and pytest 9.1.1.
 
 ## Documentation
 
@@ -84,4 +85,4 @@ Latest verified result: 188 tests passed inside Linux with Python 3.12 and pytes
 
 ## Development Note
 
-The repository is being built in small, tested checkpoints. Continuous integration is active and verified. Continuous deployment, a web interface, and deployment will be documented only after they are implemented and verified.
+The repository is being built in small, tested checkpoints. Continuous integration and the local web interface are active and verified. Deployment will be documented only after it is implemented and verified.

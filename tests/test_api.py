@@ -42,6 +42,22 @@ def valid_plan_request():
     }
 
 
+def test_root_serves_web_interface():
+    response = client.get("/")
+
+    assert response.status_code == 200
+    assert "text/html" in response.headers["content-type"]
+    assert "Adaptive Wellness Coach" in response.text
+
+
+def test_static_javascript_is_available():
+    response = client.get("/static/app.js")
+
+    assert response.status_code == 200
+    assert "javascript" in response.headers["content-type"]
+    assert 'fetch("/plans"' in response.text
+
+
 def test_health_endpoint_reports_healthy():
     response = client.get("/health")
 

@@ -1,6 +1,10 @@
 """FastAPI application for the Adaptive Wellness Coach."""
 
+from pathlib import Path
+
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 
 from src.ai_feedback_service import interpret_workout_feedback
 from src.ai_plan_service import explain_weekly_plan
@@ -16,6 +20,9 @@ from src.models import (
 from src.plan_service import create_weekly_plan
 
 
+STATIC_DIR = Path(__file__).with_name("static")
+
+
 app = FastAPI(
     title="Adaptive Wellness Coach API",
     version="0.2.0",
@@ -24,6 +31,14 @@ app = FastAPI(
         "validated AI-assisted explanations and feedback interpretation."
     ),
 )
+
+app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+
+
+@app.get("/", include_in_schema=False)
+def web_interface() -> FileResponse:
+    """Serve the guided workout-plan interface."""
+    return FileResponse(STATIC_DIR / "index.html")
 
 
 @app.get("/health", response_model=HealthResponse)

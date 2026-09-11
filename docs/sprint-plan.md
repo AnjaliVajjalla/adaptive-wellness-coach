@@ -283,7 +283,35 @@ Actions reduces environment differences. Separating production from testing
 also keeps development tools out of the runtime image, while a non-root user
 and health check provide practical runtime safeguards.
 
+## Sprint 9: User Intake and Weekly-Plan Web Interface
+
+**Status:** Complete locally
+
+**Goal:** Let a user enter a fictional profile, complete safety screening,
+review the answers, and view the generated seven-day plan in a responsive web
+interface.
+
+**Acceptance criteria:**
+
+- The interface collects every approved profile and safety field
+- Required and conflicting selections receive clear browser feedback
+- Challenging beginner or sedentary selections require confirmation
+- The browser sends a structured request to the existing FastAPI endpoint
+- Generated plans display weekly totals, seven days, and exercise prescriptions
+- Blocked safety outcomes do not display a workout plan
+- The interface runs from the production Docker application
+
+**Review:** The responsive HTML, CSS, and JavaScript interface now guides the
+user through Profile, Safety, and Review steps. Browser checks verified valid
+plan generation, blocked safety behavior, selection-conflict feedback, and the
+challenging-intensity confirmation. All 190 project tests pass in Docker.
+
+**Retrospective:** Keeping the browser focused on input collection and display
+allowed the existing FastAPI, Pydantic, safety, and deterministic planning
+layers to remain the source of truth. Client-side checks improve usability,
+while backend validation still protects the application boundary.
+
 ## Later Planning
 
-After Sprint 8, add a simple web interface, deployment, and public
-presentation.
+Sprint 10 will deploy the application and complete the public README,
+architecture diagram, measured results, and portfolio presentation.

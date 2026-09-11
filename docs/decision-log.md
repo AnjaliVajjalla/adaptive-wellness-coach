@@ -25,6 +25,7 @@ This file records major product, safety, and technical decisions. Git history re
 | D-019 | Use a local JSONL evaluation dataset, deterministic grading, and saved result reports for AI-quality measurement. | This keeps evaluations reproducible, portable, reviewable, and independent of a retiring hosted evaluation platform. | Approved |
 | D-020 | Record privacy-conscious AI request traces and summarize reliability, latency, token usage, and configurable estimated cost alongside evaluation quality. | This makes AI behavior diagnosable without logging secrets or raw feedback and prevents accuracy from being evaluated without operational performance. | Approved |
 | D-021 | Use separate Docker test and production stages, run production as a non-root user with a health check, and run the Docker test stage through GitHub Actions. | This keeps development tools out of the runtime image while making local and hosted testing reproducible and production behavior easier to monitor. | Approved |
+| D-022 | Build the first web interface with responsive HTML, CSS, and vanilla JavaScript served by FastAPI, while keeping validation and plan generation authoritative on the backend. | This adds a usable portfolio interface without introducing an unnecessary frontend framework or duplicating core business logic in the browser. | Approved |
 
 ## How to Update This Log
 

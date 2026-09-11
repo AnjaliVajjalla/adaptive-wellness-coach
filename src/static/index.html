@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Create a personalized, safety-screened weekly workout plan."
+    >
+    <title>Adaptive Wellness Coach</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#">Adaptive Wellness Coach</a>
+      <span class="product-label">General wellness planning</span>
+    </header>
+
+    <main class="page-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">Build a routine that fits your life</p>
+        <h1 id="page-title">Your personalized week starts here.</h1>
+        <p class="intro-copy">
+          Tell us about your goals, schedule, and preferences. We will create a
+          practical seven-day workout plan with recovery built in.
+        </p>
+      </section>
+
+      <section class="planner-card" aria-label="Workout plan questionnaire">
+        <ol class="progress-steps" aria-label="Form progress">
+          <li class="progress-step is-active" aria-current="step">
+            <span>1</span>
+            <strong>Your profile</strong>
+          </li>
+          <li class="progress-step">
+            <span>2</span>
+            <strong>Safety check</strong>
+          </li>
+          <li class="progress-step">
+            <span>3</span>
+            <strong>Review</strong>
+          </li>
+        </ol>
+
+        <form id="plan-form">
+          <p id="form-message" class="form-message" role="alert" aria-live="polite" tabindex="-1" hidden></p>
+
+          <section class="form-step" data-step="1" aria-labelledby="profile-heading">
+            <div class="section-heading">
+              <p class="step-label">Step 1 of 3</p>
+              <h2 id="profile-heading" tabindex="-1">Create your workout profile</h2>
+              <p>Choose the options that best describe what is realistic for you.</p>
+            </div>
+
+            <div class="field-grid">
+              <label class="field">
+                <span>Primary goal</span>
+                <select name="primary_goal" required>
+                  <option value="">Select one</option>
+                  <option>Start exercising regularly</option>
+                  <option>Improve overall fitness</option>
+                  <option>Get stronger</option>
+                  <option>Increase stamina</option>
+                  <option>Improve flexibility and mobility</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Experience level</span>
+                <select name="experience_level" required>
+                  <option value="">Select one</option>
+                  <option>Complete beginner</option>
+                  <option>Returning to exercise</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Current activity level</span>
+                <select name="current_activity_level" required>
+                  <option value="">Select one</option>
+                  <option>Sedentary</option>
+                  <option>Light</option>
+                  <option>Moderate</option>
+                  <option>Heavy</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Session duration</span>
+                <select name="session_duration" required>
+                  <option value="">Select one</option>
+                  <option value="15">15 minutes</option>
+                  <option value="30">30 minutes</option>
+                  <option value="45">45 minutes</option>
+                  <option value="60">60 minutes</option>
+                </select>
+              </label>
+            </div>
+
+            <fieldset class="choice-group">
+              <legend>Available workout days</legend>
+              <p class="field-help">Select every day that could work. Your plan will include recovery days.</p>
+              <div class="chip-grid seven-columns">
+                <label><input type="checkbox" name="available_workout_days" value="Monday"><span>Mon</span></label>
+                <label><input type="checkbox" name="available_workout_days" value="Tuesday"><span>Tue</span></label>
+                <label><input type="checkbox" name="available_workout_days" value="Wednesday"><span>Wed</span></label>
+                <label><input type="checkbox" name="available_workout_days" value="Thursday"><span>Thu</span></label>
+                <label><input type="checkbox" name="available_workout_days" value="Friday"><span>Fri</span></label>
+                <label><input type="checkbox" name="available_workout_days" value="Saturday"><span>Sat</span></label>
+                <label><input type="checkbox" name="available_workout_days" value="Sunday"><span>Sun</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="choice-group">
+              <legend>Available equipment</legend>
+              <div class="check-grid">
+                <label><input type="checkbox" name="available_equipment" value="No equipment, bodyweight only"><span>No equipment</span></label>
+                <label><input type="checkbox" name="available_equipment" value="Exercise mat"><span>Exercise mat</span></label>
+                <label><input type="checkbox" name="available_equipment" value="Resistance bands"><span>Resistance bands</span></label>
+                <label><input type="checkbox" name="available_equipment" value="Dumbbells"><span>Dumbbells</span></label>
+                <label><input type="checkbox" name="available_equipment" value="Kettlebell"><span>Kettlebell</span></label>
+                <label><input type="checkbox" name="available_equipment" value="Bicycle or stationary bike"><span>Bicycle or stationary bike</span></label>
+                <label><input type="checkbox" name="available_equipment" value="Full gym access"><span>Full gym access</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="choice-group">
+              <legend>Additional goals</legend>
+              <p class="field-help">Optional. Choose any goals that support your primary goal.</p>
+              <div class="check-grid">
+                <label><input type="checkbox" name="additional_goals" value="Start exercising regularly"><span>Start exercising regularly</span></label>
+                <label><input type="checkbox" name="additional_goals" value="Improve overall fitness"><span>Improve overall fitness</span></label>
+                <label><input type="checkbox" name="additional_goals" value="Get stronger"><span>Get stronger</span></label>
+                <label><input type="checkbox" name="additional_goals" value="Increase stamina"><span>Increase stamina</span></label>
+                <label><input type="checkbox" name="additional_goals" value="Improve flexibility and mobility"><span>Improve flexibility and mobility</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="choice-group">
+              <legend>Preferred activities</legend>
+              <div class="check-grid">
+                <label><input type="checkbox" name="preferred_activities" value="Walking"><span>Walking</span></label>
+                <label><input type="checkbox" name="preferred_activities" value="Jogging or running"><span>Jogging or running</span></label>
+                <label><input type="checkbox" name="preferred_activities" value="Cycling"><span>Cycling</span></label>
+                <label><input type="checkbox" name="preferred_activities" value="Strength training"><span>Strength training</span></label>
+                <label><input type="checkbox" name="preferred_activities" value="Bodyweight workouts"><span>Bodyweight workouts</span></label>
+                <label><input type="checkbox" name="preferred_activities" value="Yoga or mobility"><span>Yoga or mobility</span></label>
+                <label><input type="checkbox" name="preferred_activities" value="No preference"><span>No preference</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="choice-group">
+              <legend>Activities you dislike</legend>
+              <div class="check-grid">
+                <label><input type="checkbox" name="disliked_activities" value="Walking"><span>Walking</span></label>
+                <label><input type="checkbox" name="disliked_activities" value="Jogging or running"><span>Jogging or running</span></label>
+                <label><input type="checkbox" name="disliked_activities" value="Cycling"><span>Cycling</span></label>
+                <label><input type="checkbox" name="disliked_activities" value="Strength training"><span>Strength training</span></label>
+                <label><input type="checkbox" name="disliked_activities" value="Bodyweight workouts"><span>Bodyweight workouts</span></label>
+                <label><input type="checkbox" name="disliked_activities" value="Yoga or mobility"><span>Yoga or mobility</span></label>
+                <label><input type="checkbox" name="disliked_activities" value="No disliked activities"><span>No disliked activities</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="choice-group">
+              <legend>Preferred intensity</legend>
+              <div class="chip-grid four-columns">
+                <label><input type="radio" name="preferred_intensity" value="Gentle"><span>Gentle</span></label>
+                <label><input type="radio" name="preferred_intensity" value="Moderate"><span>Moderate</span></label>
+                <label><input type="radio" name="preferred_intensity" value="Challenging"><span>Challenging</span></label>
+                <label><input type="radio" name="preferred_intensity" value="No preference"><span>No preference</span></label>
+              </div>
+            </fieldset>
+
+            <div class="form-actions align-right">
+              <button class="button button-primary" type="button" data-action="next">Continue to safety</button>
+            </div>
+          </section>
+
+          <section class="form-step" data-step="2" aria-labelledby="safety-heading" hidden>
+            <div class="section-heading">
+              <p class="step-label">Step 2 of 3</p>
+              <h2 id="safety-heading" tabindex="-1">Confirm this planner is appropriate</h2>
+              <p>This product provides general wellness planning, not medical guidance.</p>
+            </div>
+
+            <div class="notice">
+              If any answer is Yes, personalized plan generation will stop and
+              recommend consulting an appropriate qualified professional.
+            </div>
+
+            <fieldset class="safety-question">
+              <legend>Are you currently pregnant or postpartum?</legend>
+              <label><input type="radio" name="pregnant_or_postpartum" value="true"><span>Yes</span></label>
+              <label><input type="radio" name="pregnant_or_postpartum" value="false"><span>No</span></label>
+            </fieldset>
+
+            <fieldset class="safety-question">
+              <legend>Do you have a current injury or need rehabilitation support?</legend>
+              <label><input type="radio" name="current_injury_or_rehabilitation" value="true"><span>Yes</span></label>
+              <label><input type="radio" name="current_injury_or_rehabilitation" value="false"><span>No</span></label>
+            </fieldset>
+
+            <fieldset class="safety-question">
+              <legend>Do you have an eating-disorder or disordered-eating concern?</legend>
+              <label><input type="radio" name="eating_disorder_concern" value="true"><span>Yes</span></label>
+              <label><input type="radio" name="eating_disorder_concern" value="false"><span>No</span></label>
+            </fieldset>
+
+            <fieldset class="safety-question">
+              <legend>Do you have a complex or uncontrolled condition that could affect exercise?</legend>
+              <label><input type="radio" name="complex_or_uncontrolled_medical_condition" value="true"><span>Yes</span></label>
+              <label><input type="radio" name="complex_or_uncontrolled_medical_condition" value="false"><span>No</span></label>
+            </fieldset>
+
+            <fieldset class="safety-question">
+              <legend>Are you requesting diagnosis, treatment, or symptom management?</legend>
+              <label><input type="radio" name="requests_diagnosis_or_treatment" value="true"><span>Yes</span></label>
+              <label><input type="radio" name="requests_diagnosis_or_treatment" value="false"><span>No</span></label>
+            </fieldset>
+
+            <fieldset class="safety-question">
+              <legend>Does your request include an extreme weight-loss goal?</legend>
+              <label><input type="radio" name="extreme_weight_loss_goal" value="true"><span>Yes</span></label>
+              <label><input type="radio" name="extreme_weight_loss_goal" value="false"><span>No</span></label>
+            </fieldset>
+
+            <fieldset class="safety-question">
+              <legend>Are you requesting medication, supplement, or therapeutic-diet guidance?</legend>
+              <label><input type="radio" name="requests_medication_supplement_or_therapeutic_diet" value="true"><span>Yes</span></label>
+              <label><input type="radio" name="requests_medication_supplement_or_therapeutic_diet" value="false"><span>No</span></label>
+            </fieldset>
+
+            <div class="form-actions">
+              <button class="button button-secondary" type="button" data-action="back">Back</button>
+              <button class="button button-primary" type="button" data-action="next">Review answers</button>
+            </div>
+          </section>
+
+          <section class="form-step" data-step="3" aria-labelledby="review-heading" hidden>
+            <div class="section-heading">
+              <p class="step-label">Step 3 of 3</p>
+              <h2 id="review-heading" tabindex="-1">Review your choices</h2>
+              <p>Check your information before generating your weekly plan.</p>
+            </div>
+
+            <div id="review-summary" class="review-summary" aria-live="polite"></div>
+
+            <div id="intensity-confirmation" class="confirmation-panel" hidden>
+              <h3>Confirm challenging intensity</h3>
+              <p>
+                A challenging plan may not be an appropriate starting point for
+                someone who is a complete beginner or currently sedentary.
+              </p>
+              <label>
+                <input type="checkbox" name="challenging_intensity_confirmed">
+                <span>I understand and want to continue with this selection.</span>
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button class="button button-secondary" type="button" data-action="back">Back</button>
+              <button id="generate-button" class="button button-primary" type="submit">Generate my plan</button>
+            </div>
+          </section>
+        </form>
+      </section>
+
+      <section id="plan-result" class="result-card" aria-labelledby="result-heading" hidden>
+        <div id="result-content"></div>
+      </section>
+
+      <p class="scope-note">
+        Adaptive Wellness Coach is a general wellness-planning project and does not provide medical advice.
+      </p>
+    </main>
+  </body>
+</html>
